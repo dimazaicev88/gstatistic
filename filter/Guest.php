@@ -10,6 +10,17 @@
 #like
 #notLike
 
+/**
+ * Comparison Operators
+ */
+enum CO: string
+{
+    case NotEq = '<>';
+    case Gt = 'D';
+    case Lt = 'C';
+    case Spades = 'S';
+}
+
 
 class BaseFilter
 {
@@ -399,9 +410,9 @@ $filterGuest = new Guest();
 
 echo
 $filterGuest
-    ->id(">", 123)
+    ->id(CO::Gt, 123)
     ->or()
-    ->id("<", 200)
+    ->id(CO::Lt, 200)
     ->and()
-    ->countryId("like", "ert%")
+    ->countryId(CO::Like, "ert%")
     ->build();
