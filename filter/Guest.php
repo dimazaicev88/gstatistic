@@ -10,6 +10,48 @@
 #like
 #notLike
 
+
+class BaseFilter
+{
+    protected array $arrFilter = [];
+
+    protected function setFilter(string $operator, mixed $value, string $field): void
+    {
+        $this->arrFilter[] = [
+            'operator' => $operator,
+            'value' => $value,
+            'field' => $field
+        ];
+    }
+
+    /**
+     * Or
+     * @return $this
+     */
+    public function or(): static
+    {
+        $this->setFilter('or', '', '');
+        return $this;
+    }
+
+
+    /**
+     * Or
+     * @return $this
+     */
+    public function and(): static
+    {
+        $this->setFilter('and', '', '');
+        return $this;
+    }
+
+    public function build(): string
+    {
+        return json_encode($this->arrFilter);
+    }
+}
+
+
 class Guest extends BaseFilter
 {
 
@@ -25,29 +67,13 @@ class Guest extends BaseFilter
     }
 
     /**
-     * @return $this
-     */
-    public function or(): Guest
-    {
-        $this->arrFilter[] = [
-            'operator' => 'or'
-        ];
-        return $this;
-    }
-
-    /**
      * Был ли посетитель когда-либо авторизован на сайте:
      * @param bool $value
      * @return $this
      */
     function isRegistered(bool $value): Guest
     {
-
-        $this->arrFilter[] = [
-            'operator' => "=",
-            'value' => $value,
-            'field' => 'registered'
-        ];
+        $this->setFilter('=', intval($value), "registered");
         return $this;
     }
 
@@ -115,12 +141,7 @@ class Guest extends BaseFilter
      */
     function periodDate2(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'period_date_2'
-        ];
-
+        $this->setFilter($operator, $value, "period_date_2");
         return $this;
     }
 
@@ -130,12 +151,7 @@ class Guest extends BaseFilter
      */
     function siteId(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'period_date_2'
-        ];
-
+        $this->setFilter($operator, $value, "site_id");
         return $this;
     }
 
@@ -145,11 +161,7 @@ class Guest extends BaseFilter
      */
     function firstSiteId(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'first_site_id'
-        ];
+        $this->setFilter($operator, $value, "first_site_id");
         return $this;
     }
 
@@ -160,12 +172,7 @@ class Guest extends BaseFilter
      */
     function lastSiteId(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'last_site_id'
-        ];
-
+        $this->setFilter($operator, $value, "last_site_id");
         return $this;
     }
 
@@ -175,12 +182,7 @@ class Guest extends BaseFilter
      */
     function url(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'url'
-        ];
-
+        $this->setFilter($operator, $value, "url");
         return $this;
     }
 
@@ -190,6 +192,7 @@ class Guest extends BaseFilter
      */
     function existsUrl404(bool $value): Guest
     {
+        $this->setFilter('=', intval($value), "url_404");
         return $this;
     }
 
@@ -199,23 +202,19 @@ class Guest extends BaseFilter
      */
     function userAgent(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'user_agent'
-        ];
-
+        $this->setFilter($operator, $value, "user_agent");
         return $this;
     }
 
     /**
      * Флаг "приходил ли посетитель когда-либо по рекламной кампании (не равной NA/NA)", возможные значения:
-     * Y - посетитель приходил по какой-либо рекламной кампании(не равной NA / NA);
-     * N - не приходил никогда ни по одной рекламной кампании(не равной NA / NA).
+     * true - посетитель приходил по какой-либо рекламной кампании(не равной NA / NA);
+     * false - не приходил никогда ни по одной рекламной кампании(не равной NA / NA).
      * @return $this
      */
     function isAdv(bool $value): Guest
     {
+        $this->setFilter('=', intval($value), "adv");
         return $this;
     }
 
@@ -225,12 +224,7 @@ class Guest extends BaseFilter
      */
     function advId(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'adv_id'
-        ];
-
+        $this->setFilter($operator, $value, "adv_id");
         return $this;
     }
 
@@ -240,12 +234,7 @@ class Guest extends BaseFilter
      */
     function referer1(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'referer_1'
-        ];
-
+        $this->setFilter($operator, $value, "referer_1");
         return $this;
     }
 
@@ -255,12 +244,7 @@ class Guest extends BaseFilter
      */
     function referer2(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'referer_2'
-        ];
-
+        $this->setFilter($operator, $value, "referer_2");
         return $this;
     }
 
@@ -270,12 +254,7 @@ class Guest extends BaseFilter
      */
     function referer3(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'referer_3'
-        ];
-
+        $this->setFilter($operator, $value, "referer_3");
         return $this;
     }
 
@@ -286,12 +265,7 @@ class Guest extends BaseFilter
      */
     function events1(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'events_1'
-        ];
-
+        $this->setFilter($operator, $value, "events_1");
         return $this;
     }
 
@@ -302,12 +276,7 @@ class Guest extends BaseFilter
      */
     function events2(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'events_2'
-        ];
-
+        $this->setFilter($operator, $value, "events_2");
         return $this;
     }
 
@@ -317,12 +286,7 @@ class Guest extends BaseFilter
      */
     function sess1(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'sess_1'
-        ];
-
+        $this->setFilter($operator, $value, "sess_1");
         return $this;
     }
 
@@ -332,12 +296,7 @@ class Guest extends BaseFilter
      */
     function sess2(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'sess_2'
-        ];
-
+        $this->setFilter($operator, $value, "sess_2");
         return $this;
     }
 
@@ -347,12 +306,7 @@ class Guest extends BaseFilter
      */
     function hits1(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'hits_1'
-        ];
-
+        $this->setFilter($operator, $value, "hits_1");
         return $this;
     }
 
@@ -362,23 +316,19 @@ class Guest extends BaseFilter
      */
     function hits2(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'hits_2'
-        ];
-
+        $this->setFilter($operator, $value, "hits_2");
         return $this;
     }
 
     /**
      * Флаг "добавлял ли посетитель сайт в "Избранное"", возможные значения:
-     * Y - добавлял;
-     * N - не добавлял
+     * true - добавлял;
+     * false - не добавлял
      * @return $this
      */
-    function favorites(): Guest
+    function isAddToFavorites(bool $value): Guest
     {
+        $this->setFilter('=', intval($value), "favorite");
         return $this;
     }
 
@@ -388,12 +338,7 @@ class Guest extends BaseFilter
      */
     function ip(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'ip'
-        ];
-
+        $this->setFilter('=', intval($value), "ip");
         return $this;
     }
 
@@ -403,12 +348,7 @@ class Guest extends BaseFilter
      */
     function lang(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'lang'
-        ];
-
+        $this->setFilter($operator, $value, "lang");
         return $this;
     }
 
@@ -418,12 +358,7 @@ class Guest extends BaseFilter
      */
     function countryId(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'country_id'
-        ];
-
+        $this->setFilter($operator, $value, "country_id");
         return $this;
     }
 
@@ -434,12 +369,7 @@ class Guest extends BaseFilter
      */
     function country(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'country'
-        ];
-
+        $this->setFilter($operator, $value, "country");
         return $this;
     }
 
@@ -449,11 +379,7 @@ class Guest extends BaseFilter
      */
     function user(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'user'
-        ];
+        $this->setFilter($operator, $value, "user");
         return $this;
     }
 
@@ -463,20 +389,19 @@ class Guest extends BaseFilter
      */
     function userId(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'user_id'
-        ];
-
+        $this->setFilter($operator, $value, "user_id");
         return $this;
     }
 
-    public function build(): string
-    {
-        return json_encode($this->arrFilter);
-    }
 }
 
+$filterGuest = new Guest();
+
 echo
-(new Guest())->id(">", 123)->or()->id("<", 200)->build();
+$filterGuest
+    ->id(">", 123)
+    ->or()
+    ->id("<", 200)
+    ->and()
+    ->countryId("like", "ert%")
+    ->build();
