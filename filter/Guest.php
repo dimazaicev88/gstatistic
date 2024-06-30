@@ -10,29 +10,24 @@
 #like
 #notLike
 
-class GuestFilter
+class Guest extends BaseFilter
 {
-    private array $arrFilter = [];
 
     /**
      * @param string $operator
      * @param int $value
      * @return $this
      */
-    function id(string $operator, int $value): GuestFilter
+    function id(string $operator, int $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'id'
-        ];
+        $this->setFilter($operator, $value, "id");
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function or(): GuestFilter
+    public function or(): Guest
     {
         $this->arrFilter[] = [
             'operator' => 'or'
@@ -45,8 +40,9 @@ class GuestFilter
      * @param bool $value
      * @return $this
      */
-    function isRegistered(bool $value): GuestFilter
+    function isRegistered(bool $value): Guest
     {
+
         $this->arrFilter[] = [
             'operator' => "=",
             'value' => $value,
@@ -59,15 +55,11 @@ class GuestFilter
      * Начальное значение интервала для поля "дата первого захода на сайт"
      * @param string $operator
      * @param string $value
-     * @return GuestFilter
+     * @return Guest
      */
-    function firstDate1(string $operator, string $value): GuestFilter
+    function firstDate1(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'first_date_1'
-        ];
+        $this->setFilter($operator, $value, "first_date_1");
         return $this;
     }
 
@@ -75,15 +67,11 @@ class GuestFilter
      * Конечное значение интервала для поля "дата первого захода на сайт"
      * @param string $operator
      * @param string $value
-     * @return GuestFilter
+     * @return Guest
      */
-    function firstDate2(string $operator, string $value): GuestFilter
+    function firstDate2(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'first_date_2'
-        ];
+        $this->setFilter($operator, $value, "first_date_2");
         return $this;
     }
 
@@ -91,16 +79,11 @@ class GuestFilter
      * Начальное значение интервала для поля "дата последнего захода на сайт"
      * @param string $operator
      * @param string $value
-     * @return GuestFilter
+     * @return Guest
      */
-    function lastDate1(string $operator, string $value): GuestFilter
+    function lastDate1(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'last_date_1'
-        ];
-
+        $this->setFilter($operator, $value, "last_date_1");
         return $this;
     }
 
@@ -108,16 +91,11 @@ class GuestFilter
      * Конечное значение интервала для поля "дата первого захода на сайт"
      * @param string $operator
      * * @param string $value
-     * * @return GuestFilter
+     * * @return Guest
      */
-    function lastDate2(string $operator, string $value): GuestFilter
+    function lastDate2(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'last_date_2'
-        ];
-
+        $this->setFilter($operator, $value, "last_date_2");
         return $this;
     }
 
@@ -125,14 +103,9 @@ class GuestFilter
      * Начальное значение интервала для даты посещения посетителем сайта
      * @return $this
      */
-    function periodDate1(string $operator, string $value): GuestFilter
+    function periodDate1(string $operator, string $value): Guest
     {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => 'period_date_1'
-        ];
-
+        $this->setFilter($operator, $value, "period_date_1");
         return $this;
     }
 
@@ -140,7 +113,7 @@ class GuestFilter
      * Конечно значение интервала для даты посещения посетителем сайта
      * @return $this
      */
-    function periodDate2(string $operator, string $value): GuestFilter
+    function periodDate2(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -155,7 +128,7 @@ class GuestFilter
      * ID сайта первого либо последнего захода;
      * @return $this
      */
-    function siteId(string $operator, string $value): GuestFilter
+    function siteId(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -170,7 +143,7 @@ class GuestFilter
      * ID сайта первого захода
      * @return $this
      */
-    function firstSiteId(string $operator, string $value): GuestFilter
+    function firstSiteId(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -185,7 +158,7 @@ class GuestFilter
      * ID сайта последнего захода
      * @return $this
      */
-    function lastSiteId(string $operator, string $value): GuestFilter
+    function lastSiteId(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -200,7 +173,7 @@ class GuestFilter
      * Страница откуда впервые пришел посетитель, страница на которую впервые пришел посетитель и последняя страница просмотренная посетителем;
      * @return $this
      */
-    function url(string $operator, string $value): GuestFilter
+    function url(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -215,7 +188,7 @@ class GuestFilter
      * URL_404 - была ли 404 ошибка на первой странице или на последней странице посещенной посетителем, возможные значения:
      * @return $this
      */
-    function existsUrl404(bool $value): GuestFilter
+    function existsUrl404(bool $value): Guest
     {
         return $this;
     }
@@ -224,7 +197,7 @@ class GuestFilter
      * UserAgent посетителя на последнем заходе;
      * @return $this
      */
-    function userAgent(string $operator, string $value): GuestFilter
+    function userAgent(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -241,7 +214,7 @@ class GuestFilter
      * N - не приходил никогда ни по одной рекламной кампании(не равной NA / NA).
      * @return $this
      */
-    function isAdv(bool $value): GuestFilter
+    function isAdv(bool $value): Guest
     {
         return $this;
     }
@@ -250,7 +223,7 @@ class GuestFilter
      * ID рекламной кампании первого либо последнего захода посетителя(при этом это мог быть как прямой заход, так и возврат по рекламной кампании)
      * @return $this
      */
-    function advId(string $operator, string $value): GuestFilter
+    function advId(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -265,7 +238,7 @@ class GuestFilter
      * Идентификатор referer1 рекламной кампании первого либо последнего захода посетителя;
      * @return $this
      */
-    function referer1(string $operator, string $value): GuestFilter
+    function referer1(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -280,7 +253,7 @@ class GuestFilter
      * Идентификатор referer2 рекламной кампании первого либо последнего захода посетителя
      * @return $this
      */
-    function referer2(string $operator, string $value): GuestFilter
+    function referer2(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -295,7 +268,7 @@ class GuestFilter
      * Дополнительный параметр referer3 рекламной кампании первого либо последнего захода посетителя
      * @return $this
      */
-    function referer3(string $operator, string $value): GuestFilter
+    function referer3(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -311,7 +284,7 @@ class GuestFilter
      *
      * @return $this
      */
-    function events1(string $operator, string $value): GuestFilter
+    function events1(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -327,7 +300,7 @@ class GuestFilter
      *
      * @return $this
      */
-    function events2(string $operator, string $value): GuestFilter
+    function events2(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -342,7 +315,7 @@ class GuestFilter
      * Начальное значение для интервала кол - ва сессий сгенерированных посетителем
      * @return $this
      */
-    function sess1(string $operator, string $value): GuestFilter
+    function sess1(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -357,7 +330,7 @@ class GuestFilter
      * Конечное значение для интервала кол - ва сессий сгенерированных посетителем;
      * @return $this
      */
-    function sess2(string $operator, string $value): GuestFilter
+    function sess2(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -372,7 +345,7 @@ class GuestFilter
      * Начальное значение для интервала кол - ва хитов сгенерированных посетителем;
      * @return $this
      */
-    function hits1(string $operator, string $value): GuestFilter
+    function hits1(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -387,7 +360,7 @@ class GuestFilter
      *  Конечное значение для интервала кол - ва хитов сгенерированных посетителем;
      * @return $this
      */
-    function hits2(string $operator, string $value): GuestFilter
+    function hits2(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -404,7 +377,7 @@ class GuestFilter
      * N - не добавлял
      * @return $this
      */
-    function favorites(): GuestFilter
+    function favorites(): Guest
     {
         return $this;
     }
@@ -413,7 +386,7 @@ class GuestFilter
      * IP адрес посетителя сайта в последнем заходе
      * @return $this
      */
-    function ip(string $operator, string $value): GuestFilter
+    function ip(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -428,7 +401,7 @@ class GuestFilter
      * Языки установленные в настройках браузера посетителя в последнем заходе
      * @return $this
      */
-    function lang(string $operator, string $value): GuestFilter
+    function lang(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -443,7 +416,7 @@ class GuestFilter
      * ID страны(двух символьный идентификатор) посетителя в последнем заходе
      * @return $this
      */
-    function countryId(string $operator, string $value): GuestFilter
+    function countryId(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -459,7 +432,7 @@ class GuestFilter
      *
      * @return $this
      */
-    function country(string $operator, string $value): GuestFilter
+    function country(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -474,7 +447,7 @@ class GuestFilter
      * ID, логин, имя, фамилия пользователя, под которыми посетитель последний раз был авторизован
      * @return $this
      */
-    function user(string $operator, string $value): GuestFilter
+    function user(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -488,7 +461,7 @@ class GuestFilter
      * ID пользователя, под которым посетитель последний раз был авторизован
      * @return $this
      */
-    function userId(string $operator, string $value): GuestFilter
+    function userId(string $operator, string $value): Guest
     {
         $this->arrFilter[] = [
             'operator' => $operator,
@@ -506,4 +479,4 @@ class GuestFilter
 }
 
 echo
-(new GuestFilter())->id(">", 123)->or()->id("<", 200)->build();
+(new Guest())->id(">", 123)->or()->id("<", 200)->build();
