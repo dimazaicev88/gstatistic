@@ -10,68 +10,16 @@
 #like
 #notLike
 
-/**
- * Comparison Operators
- */
-enum CO: string
-{
-    case NotEq = '<>';
-    case Gt = 'D';
-    case Lt = 'C';
-    case Spades = 'S';
-}
-
-
-class BaseFilter
-{
-    protected array $arrFilter = [];
-
-    protected function setFilter(string $operator, mixed $value, string $field): void
-    {
-        $this->arrFilter[] = [
-            'operator' => $operator,
-            'value' => $value,
-            'field' => $field
-        ];
-    }
-
-    /**
-     * Or
-     * @return $this
-     */
-    public function or(): static
-    {
-        $this->setFilter('or', '', '');
-        return $this;
-    }
-
-
-    /**
-     * Or
-     * @return $this
-     */
-    public function and(): static
-    {
-        $this->setFilter('and', '', '');
-        return $this;
-    }
-
-    public function build(): string
-    {
-        return json_encode($this->arrFilter);
-    }
-}
-
 
 class Guest extends BaseFilter
 {
 
     /**
-     * @param string $operator
+     * @param Operator $operator
      * @param int $value
      * @return $this
      */
-    function id(string $operator, int $value): Guest
+    function id(Operator $operator, int $value): Guest
     {
         $this->setFilter($operator, $value, "id");
         return $this;
@@ -84,17 +32,17 @@ class Guest extends BaseFilter
      */
     function isRegistered(bool $value): Guest
     {
-        $this->setFilter('=', intval($value), "registered");
+        $this->setFilter(Operator::Eq, intval($value), "registered");
         return $this;
     }
 
     /**
      * Начальное значение интервала для поля "дата первого захода на сайт"
-     * @param string $operator
+     * @param Operator $operator
      * @param string $value
      * @return Guest
      */
-    function firstDate1(string $operator, string $value): Guest
+    function firstDate1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "first_date_1");
         return $this;
@@ -102,11 +50,11 @@ class Guest extends BaseFilter
 
     /**
      * Конечное значение интервала для поля "дата первого захода на сайт"
-     * @param string $operator
+     * @param Operator $operator
      * @param string $value
      * @return Guest
      */
-    function firstDate2(string $operator, string $value): Guest
+    function firstDate2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "first_date_2");
         return $this;
@@ -114,11 +62,11 @@ class Guest extends BaseFilter
 
     /**
      * Начальное значение интервала для поля "дата последнего захода на сайт"
-     * @param string $operator
+     * @param Operator $operator
      * @param string $value
      * @return Guest
      */
-    function lastDate1(string $operator, string $value): Guest
+    function lastDate1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "last_date_1");
         return $this;
@@ -126,11 +74,11 @@ class Guest extends BaseFilter
 
     /**
      * Конечное значение интервала для поля "дата первого захода на сайт"
-     * @param string $operator
-     * * @param string $value
-     * * @return Guest
+     * @param Operator $operator
+     * @param string $value
+     * @return Guest
      */
-    function lastDate2(string $operator, string $value): Guest
+    function lastDate2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "last_date_2");
         return $this;
@@ -138,9 +86,11 @@ class Guest extends BaseFilter
 
     /**
      * Начальное значение интервала для даты посещения посетителем сайта
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function periodDate1(string $operator, string $value): Guest
+    function periodDate1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "period_date_1");
         return $this;
@@ -148,9 +98,11 @@ class Guest extends BaseFilter
 
     /**
      * Конечно значение интервала для даты посещения посетителем сайта
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function periodDate2(string $operator, string $value): Guest
+    function periodDate2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "period_date_2");
         return $this;
@@ -158,9 +110,11 @@ class Guest extends BaseFilter
 
     /**
      * ID сайта первого либо последнего захода;
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function siteId(string $operator, string $value): Guest
+    function siteId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "site_id");
         return $this;
@@ -168,9 +122,11 @@ class Guest extends BaseFilter
 
     /**
      * ID сайта первого захода
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function firstSiteId(string $operator, string $value): Guest
+    function firstSiteId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "first_site_id");
         return $this;
@@ -179,9 +135,11 @@ class Guest extends BaseFilter
 
     /**
      * ID сайта последнего захода
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function lastSiteId(string $operator, string $value): Guest
+    function lastSiteId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "last_site_id");
         return $this;
@@ -189,9 +147,11 @@ class Guest extends BaseFilter
 
     /**
      * Страница откуда впервые пришел посетитель, страница на которую впервые пришел посетитель и последняя страница просмотренная посетителем;
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function url(string $operator, string $value): Guest
+    function url(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "url");
         return $this;
@@ -209,9 +169,11 @@ class Guest extends BaseFilter
 
     /**
      * UserAgent посетителя на последнем заходе;
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function userAgent(string $operator, string $value): Guest
+    function userAgent(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "user_agent");
         return $this;
@@ -231,9 +193,11 @@ class Guest extends BaseFilter
 
     /**
      * ID рекламной кампании первого либо последнего захода посетителя(при этом это мог быть как прямой заход, так и возврат по рекламной кампании)
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function advId(string $operator, string $value): Guest
+    function advId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "adv_id");
         return $this;
@@ -241,9 +205,11 @@ class Guest extends BaseFilter
 
     /**
      * Идентификатор referer1 рекламной кампании первого либо последнего захода посетителя;
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function referer1(string $operator, string $value): Guest
+    function referer1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "referer_1");
         return $this;
@@ -251,9 +217,11 @@ class Guest extends BaseFilter
 
     /**
      * Идентификатор referer2 рекламной кампании первого либо последнего захода посетителя
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function referer2(string $operator, string $value): Guest
+    function referer2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "referer_2");
         return $this;
@@ -261,9 +229,11 @@ class Guest extends BaseFilter
 
     /**
      * Дополнительный параметр referer3 рекламной кампании первого либо последнего захода посетителя
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function referer3(string $operator, string $value): Guest
+    function referer3(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "referer_3");
         return $this;
@@ -271,10 +241,11 @@ class Guest extends BaseFilter
 
     /**
      * Начальное значение для интервала кол - ва событий сгенерированных посетителем
-     *
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function events1(string $operator, string $value): Guest
+    function events1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "events_1");
         return $this;
@@ -282,10 +253,11 @@ class Guest extends BaseFilter
 
     /**
      * Конечное значение для интервала кол - ва событий сгенерированных посетителем;
-     *
+     * @param Operator $operator
+     * * @param string $value
      * @return $this
      */
-    function events2(string $operator, string $value): Guest
+    function events2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "events_2");
         return $this;
@@ -293,9 +265,11 @@ class Guest extends BaseFilter
 
     /**
      * Начальное значение для интервала кол - ва сессий сгенерированных посетителем
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function sess1(string $operator, string $value): Guest
+    function sess1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "sess_1");
         return $this;
@@ -303,9 +277,11 @@ class Guest extends BaseFilter
 
     /**
      * Конечное значение для интервала кол - ва сессий сгенерированных посетителем;
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function sess2(string $operator, string $value): Guest
+    function sess2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "sess_2");
         return $this;
@@ -313,9 +289,11 @@ class Guest extends BaseFilter
 
     /**
      * Начальное значение для интервала кол - ва хитов сгенерированных посетителем;
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function hits1(string $operator, string $value): Guest
+    function hits1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "hits_1");
         return $this;
@@ -323,9 +301,11 @@ class Guest extends BaseFilter
 
     /**
      *  Конечное значение для интервала кол - ва хитов сгенерированных посетителем;
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function hits2(string $operator, string $value): Guest
+    function hits2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "hits_2");
         return $this;
@@ -345,19 +325,23 @@ class Guest extends BaseFilter
 
     /**
      * IP адрес посетителя сайта в последнем заходе
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function ip(string $operator, string $value): Guest
+    function ip(Operator $operator, string $value): Guest
     {
-        $this->setFilter('=', intval($value), "ip");
+        $this->setFilter($operator, intval($value), "ip");
         return $this;
     }
 
     /**
      * Языки установленные в настройках браузера посетителя в последнем заходе
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function lang(string $operator, string $value): Guest
+    function lang(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "lang");
         return $this;
@@ -365,9 +349,11 @@ class Guest extends BaseFilter
 
     /**
      * ID страны(двух символьный идентификатор) посетителя в последнем заходе
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function countryId(string $operator, string $value): Guest
+    function countryId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "country_id");
         return $this;
@@ -375,10 +361,11 @@ class Guest extends BaseFilter
 
     /**
      * Название страны
-     *
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function country(string $operator, string $value): Guest
+    function country(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "country");
         return $this;
@@ -386,9 +373,11 @@ class Guest extends BaseFilter
 
     /**
      * ID, логин, имя, фамилия пользователя, под которыми посетитель последний раз был авторизован
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function user(string $operator, string $value): Guest
+    function user(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "user");
         return $this;
@@ -396,9 +385,11 @@ class Guest extends BaseFilter
 
     /**
      * ID пользователя, под которым посетитель последний раз был авторизован
+     * @param Operator $operator
+     * @param string $value
      * @return $this
      */
-    function userId(string $operator, string $value): Guest
+    function userId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "user_id");
         return $this;
@@ -410,9 +401,9 @@ $filterGuest = new Guest();
 
 echo
 $filterGuest
-    ->id(CO::Gt, 123)
+    ->id(Operator::Gt, 123)
     ->or()
-    ->id(CO::Lt, 200)
+    ->id(Operator::Lt, 200)
     ->and()
-    ->countryId(CO::Like, "ert%")
+    ->countryId(Operator::Like, "ru%")
     ->build();

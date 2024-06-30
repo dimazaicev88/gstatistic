@@ -4,10 +4,10 @@ class BaseFilter
 {
     protected array $arrFilter = [];
 
-    protected function setFilter(string $operator, mixed $value,string $field): void
+    protected function setFilter(Operator $operator, mixed $value, string $field): void
     {
         $this->arrFilter[] = [
-            'operator' => $operator,
+            'operator' => $operator->value,
             'value' => $value,
             'field' => $field
         ];
@@ -19,7 +19,7 @@ class BaseFilter
      */
     public function or(): static
     {
-        $this->setFilter('or', '', '');
+        $this->setFilter(Operator::Or, '', '');
         return $this;
     }
 
@@ -30,7 +30,7 @@ class BaseFilter
      */
     public function and(): static
     {
-        $this->setFilter('and', '', '');
+        $this->setFilter(Operator::And, '', '');
         return $this;
     }
 
