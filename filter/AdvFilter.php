@@ -186,6 +186,3 @@ class AdvFilter extends BaseFilter
         return $this;
     }
 }
-
-
-(new AdvFilter())->referer1(Operator::Eq, "referer1")->and()->referer2(Operator::Like, "%test%")->build();
