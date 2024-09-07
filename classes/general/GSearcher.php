@@ -26,7 +26,11 @@ class GSearcher
      * @param array $arFilter
      * @return array
      */
-    public static function getDomainList(string $by = 's_id', string $order = 'desc', array $arFilter = []): array
+    public static function getDomainList(
+        string $by = 's_id',
+        string $order = 'desc',
+        array  $arFilter = []
+    ): array
     {
         return [];
     }

@@ -24,7 +24,14 @@ class GAdv
      * @param int $limit
      * @return array
      */
-    public static function find(AdvFilter $filter, array $fields = [], array $order = [], string $orderBy = "", int $skip = 0, int $limit = 0): array
+    public static function find(
+        AdvFilter $filter,
+        array     $fields = [],
+        array     $order = [],
+        string    $orderBy = "",
+        int       $skip = 0,
+        int       $limit = 0
+    ): array
     {
         return [];
     }
@@ -47,7 +54,12 @@ class GAdv
      * @param array $arFilter
      * @return array
      */
-    public static function getEventList(string $advUuid, string $by = 's_counter', string $order = 'desc', array $arFilter = []): array
+    public static function getEventList(
+        string $advUuid,
+        string $by = 's_counter',
+        string $order = 'desc',
+        array  $arFilter = []
+    ): array
     {
         return [];
     }
@@ -67,7 +79,13 @@ class GAdv
      * @param array $arFilter
      * @return array
      */
-    public static function GetDynamicList(string $advUuid, string $by = 's_date', string $order = 'desc', array &$arMaxMin = [], array $arFilter = []): array
+    public static function GetDynamicList(
+        string $advUuid,
+        string $by = 's_date',
+        string $order = 'desc',
+        array  &$arMaxMin = [],
+        array  $arFilter = []
+    ): array
     {
         return [];
     }
@@ -85,7 +103,11 @@ class GAdv
      * @param array $arFilter
      * @return array
      */
-    public static function GetSimpleList(string $by = 's_referer1', string $order = 'asc', array $arFilter = []): array
+    public static function GetSimpleList(
+        string $by = 's_referer1',
+        string $order = 'asc',
+        array  $arFilter = []
+    ): array
     {
         return [];
     }

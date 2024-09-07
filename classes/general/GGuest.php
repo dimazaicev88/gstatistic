@@ -12,7 +12,14 @@ class GGuest
      * @param int $limit
      * @return array
      */
-    static function find(GuestFilter $filter, array $fields = [], array $order = [], string $orderBy = "", int $skip = 0, int $limit = 0): array
+    static function find(
+        GuestFilter $filter,
+        array       $fields = [],
+        array       $order = [],
+        string      $orderBy = "",
+        int         $skip = 0,
+        int         $limit = 0
+    ): array
     {
         return [];
     }

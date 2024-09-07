@@ -12,7 +12,14 @@ class GHit
      * @param int $limit
      * @return array
      */
-    public static function find(HitFilter $filter, array $fields = [], array $order = [], string $orderBy = "", int $skip = 0, int $limit = 0): array
+    public static function find(
+        HitFilter $filter,
+        array     $fields = [],
+        array     $order = [],
+        string    $orderBy = "",
+        int       $skip = 0,
+        int       $limit = 0
+    ): array
     {
         return [];
     }
