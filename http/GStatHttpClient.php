@@ -1,10 +1,8 @@
 <?php
 
-namespace http;
-
-class HttpClient
+class GStatHttpClient
 {
-    function sendPostRequest($url, $data): string
+    public static function post(string $url, array $data): string
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
