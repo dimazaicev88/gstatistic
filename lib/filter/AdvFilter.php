@@ -1,5 +1,7 @@
 <?php
 
+namespace GStatistics\Filter;
+
 class AdvFilter extends BaseFilter
 {
 

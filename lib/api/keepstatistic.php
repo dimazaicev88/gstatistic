@@ -1,11 +1,14 @@
 <?php
 
+namespace GStatistics\Api;
+
 use Bitrix\Main\ArgumentOutOfRangeException;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
-use GStatistics\http\GStatHttpClient;
+use GStatistics\Http\HttpClient;
 
-class GKeepstatistic
+
+class KeepStatistic
 {
 
 
@@ -21,7 +24,7 @@ class GKeepstatistic
         $isUserAuth = false;
         $siteId = "";
 
-        Option::set("gstatistic", "server_url", "");
+        Option::set("gstatistic", "server_url", "http://127.0.0.1:9008");
         $serverUrl = Option::get("gstatistic", "server_url");
         $ctx = Context::getCurrent();
 
@@ -64,6 +67,6 @@ class GKeepstatistic
             $data['event3'] = $event3;
         }
 
-        GStatHttpClient::post($serverUrl, $data);
+        var_dump(HttpClient::post($serverUrl, $data));
     }
 }

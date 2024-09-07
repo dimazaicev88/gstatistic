@@ -1,5 +1,6 @@
 <?php
 
+namespace GStatistics\api;
 use GStatistics\filter\HitFilter;
 
 class GHit

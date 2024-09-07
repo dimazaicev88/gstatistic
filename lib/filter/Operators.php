@@ -1,5 +1,6 @@
 <?php
 
+namespace GStatistics\filter;
 /**
  * Comparison Operators
  */

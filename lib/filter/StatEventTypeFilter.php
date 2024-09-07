@@ -1,6 +1,8 @@
 <?php
 
 
+namespace GStatistics\filter;
+
 class StatEventTypeFilter extends BaseFilter
 {
 

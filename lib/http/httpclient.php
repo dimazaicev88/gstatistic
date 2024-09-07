@@ -1,6 +1,8 @@
 <?php
 
-class GStatHttpClient
+namespace GStatistics\Http;
+
+class HttpClient
 {
     public static function post(string $url, array $data): string
     {

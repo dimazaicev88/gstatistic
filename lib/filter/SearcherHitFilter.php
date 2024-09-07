@@ -1,5 +1,7 @@
 <?php
 
+namespace GStatistics\filter;
+
 class SearcherHitFilter extends BaseFilter
 {
 

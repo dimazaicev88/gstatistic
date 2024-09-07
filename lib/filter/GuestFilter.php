@@ -1,15 +1,6 @@
 <?php
 
-
-#>
-#<
-#!=
-#=
-#and
-#or
-#like
-#notLike
-
+namespace GStatistics\Filter;
 
 class GuestFilter extends BaseFilter
 {
@@ -42,9 +33,9 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return GuestFilter
      */
-    function firstDate1(Operator $operator, string $value): GuestFilter
+    function firstDate(Operator $operator, string $value): GuestFilter
     {
-        $this->setFilter($operator, $value, "firstDate1");
+        $this->setFilter($operator, $value, "firstDate");
         return $this;
     }
 
@@ -56,7 +47,7 @@ class GuestFilter extends BaseFilter
      */
     function lastDate(Operator $operator, string $value): GuestFilter
     {
-        $this->setFilter($operator, $value, "lastDate1");
+        $this->setFilter($operator, $value, "lastDate");
         return $this;
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 
+namespace GStatistics\api;
 use GStatistics\filter\SearcherHitFilter;
 
 class GSearcherHit

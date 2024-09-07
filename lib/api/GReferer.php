@@ -1,6 +1,7 @@
 <?php
 
 
+namespace GStatistics\api;
 use GStatistics\filter\RefererFilter;
 
 class GReferer

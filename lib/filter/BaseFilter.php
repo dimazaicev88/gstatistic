@@ -1,5 +1,7 @@
 <?php
 
+namespace GStatistics\Filter;
+
 class BaseFilter
 {
     protected array $arrFilter = [];

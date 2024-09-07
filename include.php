@@ -3,14 +3,15 @@
 CModule::AddAutoloadClasses(
     'gstatistic',
     [
-        'GKeepStatistics' => 'classes/general/GKeepstatistic.php',
+        '\GStatistics\KeepStatistic' => 'lib/keepstatistic.php',
+        '\GStatistics\Http\HttpClient' => 'http/httpclient.php',
 //        'CAllStatistics' => 'classes/general/statistic.php',
 //        'GStatistics' => 'classes/general/statistic.php',
 //        'GAdv' => 'classes/general/GAdv.php',
 //        'GGuest' => 'classes/general/GGuest.php',
 //        'GTraffic' => 'classes/general/GTraffic.php',
 //        'GUserOnline' => 'classes/general/GUserOnline.php',
-        'GStoplist' => 'classes/general/GStoplist.php',
+        'GStoplist' => 'lib/GStoplist.php',
 //        'GHit' => 'classes/general/GHit.php',
 //        'GSession' => 'classes/general/GSession.php',
 //        'GReferer' => 'classes/general/GReferer.php',

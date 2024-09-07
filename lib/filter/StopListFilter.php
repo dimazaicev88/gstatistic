@@ -1,5 +1,7 @@
 <?php
 
+namespace GStatistics\filter;
+
 class StopListFilter extends BaseFilter
 {
 

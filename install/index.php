@@ -2,7 +2,9 @@
 
 IncludeModuleLangFile(__FILE__);
 
-if (class_exists("gstatistic")) return;
+if (class_exists("gstatistic")) {
+    return;
+}
 
 class gstatistic extends CModule
 {
