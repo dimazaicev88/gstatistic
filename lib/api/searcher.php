@@ -2,7 +2,7 @@
 
 namespace GStatistics\api;
 
-class GSearcher
+class Searcher
 {
     /**
      * @param string $searcherUuid

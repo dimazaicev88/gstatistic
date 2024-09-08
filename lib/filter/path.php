@@ -1,8 +1,8 @@
 <?php
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class PathFilter extends BaseFilter
+class Path extends Base
 {
 
     /**
@@ -10,9 +10,9 @@ class PathFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PathFilter
+     * @return Path
      */
-    public function pathId(Operator $operator, string $value): PathFilter
+    public function pathId(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'pathId');
         return $this;
@@ -23,9 +23,9 @@ class PathFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PathFilter
+     * @return Path
      */
-    public function date(Operator $operator, string $value): PathFilter
+    public function date(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -38,7 +38,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function firstPage(Operator $operator, string $value): PathFilter
+    public function firstPage(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'firstPage');
         return $this;
@@ -51,7 +51,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function firstPageSiteId(Operator $operator, string $value): PathFilter
+    public function firstPageSiteId(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'firstPageSiteId');
         return $this;
@@ -64,7 +64,7 @@ class PathFilter extends BaseFilter
      * @param bool $value
      * @return $this
      */
-    public function isFirstPage404(Operator $operator, bool $value): PathFilter
+    public function isFirstPage404(Operator $operator, bool $value): Path
     {
         $this->setFilter($operator, $value, 'isFirstPage404');
         return $this;
@@ -78,7 +78,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function lastPage(Operator $operator, string $value): PathFilter
+    public function lastPage(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'lastPage');
         return $this;
@@ -91,7 +91,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function lastPageSiteId(Operator $operator, string $value): PathFilter
+    public function lastPageSiteId(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'lastPageSiteId');
         return $this;
@@ -103,7 +103,7 @@ class PathFilter extends BaseFilter
      * @param bool $isLastPage404
      * @return $this
      */
-    public function isLastPage404(bool $isLastPage404): PathFilter
+    public function isLastPage404(bool $isLastPage404): Path
     {
         $this->setFilter(Operator::Eq, $isLastPage404, 'isLastPage404');
         return $this;
@@ -116,7 +116,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function page(Operator $operator, string $value): PathFilter
+    public function page(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'page');
         return $this;
@@ -129,7 +129,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function pageSiteId(Operator $operator, string $value): PathFilter
+    public function pageSiteId(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'pageSiteId');
         return $this;
@@ -141,7 +141,7 @@ class PathFilter extends BaseFilter
      * @param bool $value
      * @return $this
      */
-    public function isPage404(bool $value): PathFilter
+    public function isPage404(bool $value): Path
     {
         $this->setFilter(Operator::Eq, $value, 'isPage404');
         return $this;
@@ -154,7 +154,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function advUuid(Operator $operator, string $value): PathFilter
+    public function advUuid(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'advUuid');
         return $this;
@@ -171,7 +171,7 @@ class PathFilter extends BaseFilter
      * @param AdvDataType $value
      * @return $this
      */
-    public function advDataType(Operator $operator, AdvDataType $value): PathFilter
+    public function advDataType(Operator $operator, AdvDataType $value): Path
     {
         $this->setFilter($operator, $value->value, 'advDataType');
         return $this;
@@ -184,7 +184,7 @@ class PathFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function steps(Operator $operator, string $value): PathFilter
+    public function steps(Operator $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'steps');
         return $this;

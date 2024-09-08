@@ -1,8 +1,8 @@
 <?php
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class StopListFilter extends BaseFilter
+class StopList extends Base
 {
 
     /**
@@ -10,9 +10,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function uuid(Operator $operator, string $value): StopListFilter
+    public function uuid(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -23,9 +23,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function dateStart(Operator $operator, string $value): StopListFilter
+    public function dateStart(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'dateStart');
         return $this;
@@ -36,9 +36,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function dateEnd(Operator $operator, string $value): StopListFilter
+    public function dateEnd(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'dateEnd');
         return $this;
@@ -49,9 +49,9 @@ class StopListFilter extends BaseFilter
      * Флаг активности записи
      *
      * @param bool $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function active(bool $value): StopListFilter
+    public function active(bool $value): StopList
     {
         $this->setFilter(Operator::Eq, $value, 'active');
         return $this;
@@ -61,9 +61,9 @@ class StopListFilter extends BaseFilter
      * Флаг необходимости сохранения статистики по посетителю попавшему в стоп-лист, воможные значения
      *
      * @param bool $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function saveStatistic(bool $value): StopListFilter
+    public function saveStatistic(bool $value): StopList
     {
         $this->setFilter(Operator::Eq, $value, 'saveStatistic');
         return $this;
@@ -74,9 +74,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function ip1(Operator $operator, string $value): StopListFilter
+    public function ip1(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip1');
         return $this;
@@ -87,9 +87,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function ip2(Operator $operator, string $value): StopListFilter
+    public function ip2(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip2');
         return $this;
@@ -100,9 +100,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function ip3(Operator $operator, string $value): StopListFilter
+    public function ip3(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip3');
         return $this;
@@ -113,9 +113,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function ip4(Operator $operator, string $value): StopListFilter
+    public function ip4(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip4');
         return $this;
@@ -126,9 +126,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function urlFrom(Operator $operator, string $value): StopListFilter
+    public function urlFrom(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'urlFrom');
         return $this;
@@ -140,9 +140,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function userAgent(Operator $operator, string $value): StopListFilter
+    public function userAgent(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;
@@ -154,9 +154,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function message(Operator $operator, string $value): StopListFilter
+    public function message(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'message');
         return $this;
@@ -167,9 +167,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function comments(Operator $operator, string $value): StopListFilter
+    public function comments(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'comments');
         return $this;
@@ -181,9 +181,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function urlTo(Operator $operator, string $value): StopListFilter
+    public function urlTo(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'urlTo');
         return $this;
@@ -195,9 +195,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function urlRedirect(Operator $operator, string $value): StopListFilter
+    public function urlRedirect(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'urlRedirect');
         return $this;
@@ -208,9 +208,9 @@ class StopListFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StopListFilter
+     * @return StopList
      */
-    public function siteId(Operator $operator, string $value): StopListFilter
+    public function siteId(Operator $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

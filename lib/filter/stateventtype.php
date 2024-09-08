@@ -1,9 +1,9 @@
 <?php
 
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class StatEventTypeFilter extends BaseFilter
+class StatEventType extends Base
 {
 
     /**
@@ -11,9 +11,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function uuid(Operator $operator, string $value): StatEventTypeFilter
+    public function uuid(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -24,9 +24,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function event1(Operator $operator, string $value): StatEventTypeFilter
+    public function event1(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'event1');
         return $this;
@@ -37,9 +37,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function event2(Operator $operator, string $value): StatEventTypeFilter
+    public function event2(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'event2');
         return $this;
@@ -50,9 +50,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function name(Operator $operator, string $value): StatEventTypeFilter
+    public function name(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'name');
         return $this;
@@ -63,9 +63,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function description(Operator $operator, string $value): StatEventTypeFilter
+    public function description(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'description');
         return $this;
@@ -76,9 +76,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function dateEnter(Operator $operator, string $value): StatEventTypeFilter
+    public function dateEnter(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'dateEnter');
         return $this;
@@ -89,9 +89,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function dateLast(Operator $operator, string $value): StatEventTypeFilter
+    public function dateLast(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -102,9 +102,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function datePeriod(Operator $operator, string $value): StatEventTypeFilter
+    public function datePeriod(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -115,9 +115,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function countEvent(Operator $operator, string $value): StatEventTypeFilter
+    public function countEvent(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'countEvent');
         return $this;
@@ -127,9 +127,9 @@ class StatEventTypeFilter extends BaseFilter
      * Флаг включать ли статистику по данному типу события в отчет по рекламным кампаниям, возможные значения
      *
      * @param bool $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function advVisible(bool $value): StatEventTypeFilter
+    public function advVisible(bool $value): StatEventType
     {
         $this->setFilter(Operator::Eq, $value, 'advVisible');
         return $this;
@@ -140,9 +140,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param int $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function keepDays(Operator $operator, int $value): StatEventTypeFilter
+    public function keepDays(Operator $operator, int $value): StatEventType
     {
         $this->setFilter($operator, $value, 'keepDays');
         return $this;
@@ -153,9 +153,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param int $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function dynamicKeepDays(Operator $operator, int $value): StatEventTypeFilter
+    public function dynamicKeepDays(Operator $operator, int $value): StatEventType
     {
         $this->setFilter($operator, $value, 'dynamicKeepDays');
         return $this;
@@ -166,9 +166,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function money(Operator $operator, string $value): StatEventTypeFilter
+    public function money(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'money');
         return $this;
@@ -179,9 +179,9 @@ class StatEventTypeFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return StatEventTypeFilter
+     * @return StatEventType
      */
-    public function currency(Operator $operator, string $value): StatEventTypeFilter
+    public function currency(Operator $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'currency');
         return $this;

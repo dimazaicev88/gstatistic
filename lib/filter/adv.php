@@ -2,7 +2,7 @@
 
 namespace GStatistics\Filter;
 
-class AdvFilter extends BaseFilter
+class Adv extends Base
 {
 
     /**
@@ -12,7 +12,7 @@ class AdvFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function referer1(Operator $operator, string $value): AdvFilter
+    function referer1(Operator $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "referer1");
         return $this;
@@ -25,7 +25,7 @@ class AdvFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function referer2(Operator $operator, string $value): AdvFilter
+    function referer2(Operator $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "referer2");
         return $this;
@@ -39,7 +39,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function guests(Operator $operator, int $value): AdvFilter
+    function guests(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "guests");
         return $this;
@@ -52,7 +52,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function guestsBack(Operator $operator, int $value): AdvFilter
+    function guestsBack(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "guestsBack");
         return $this;
@@ -65,7 +65,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function newGuests(Operator $operator, int $value): AdvFilter
+    function newGuests(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "newGuests");
         return $this;
@@ -78,7 +78,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function favorites(Operator $operator, int $value): AdvFilter
+    function favorites(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "favorites");
         return $this;
@@ -91,7 +91,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function favoritesBack(Operator $operator, int $value): AdvFilter
+    function favoritesBack(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "favoritesBack");
         return $this;
@@ -104,7 +104,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function hosts(Operator $operator, int $value): AdvFilter
+    function hosts(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hosts");
         return $this;
@@ -117,7 +117,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function hostsBack(Operator $operator, int $value): AdvFilter
+    function hostsBack(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hostsBack");
         return $this;
@@ -130,7 +130,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function sessions(Operator $operator, int $value): AdvFilter
+    function sessions(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "sessions");
         return $this;
@@ -143,7 +143,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function sessionsBack(Operator $operator, int $value): AdvFilter
+    function sessionsBack(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "sessionsBack");
         return $this;
@@ -156,7 +156,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function hits(Operator $operator, int $value): AdvFilter
+    function hits(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hits");
         return $this;
@@ -169,7 +169,7 @@ class AdvFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function hitsBack(Operator $operator, int $value): AdvFilter
+    function hitsBack(Operator $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hitsBack");
         return $this;
@@ -182,7 +182,7 @@ class AdvFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function period(Operator $operator, string $value): AdvFilter
+    function period(Operator $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "period");
         return $this;

@@ -2,7 +2,7 @@
 
 namespace GStatistics\Filter;
 
-class GuestFilter extends BaseFilter
+class Guest extends Base
 {
 
     /**
@@ -10,7 +10,7 @@ class GuestFilter extends BaseFilter
      * @param int $value
      * @return $this
      */
-    function uuid(Operator $operator, int $value): GuestFilter
+    function uuid(Operator $operator, int $value): Guest
     {
         $this->setFilter($operator, $value, "uuid");
         return $this;
@@ -21,7 +21,7 @@ class GuestFilter extends BaseFilter
      * @param bool $value
      * @return $this
      */
-    function isRegistered(bool $value): GuestFilter
+    function isRegistered(bool $value): Guest
     {
         $this->setFilter(Operator::Eq, intval($value), "isRegistered");
         return $this;
@@ -31,9 +31,9 @@ class GuestFilter extends BaseFilter
      * Значение интервала для поля "дата первого захода на сайт"
      * @param Operator $operator
      * @param string $value
-     * @return GuestFilter
+     * @return Guest
      */
-    function firstDate(Operator $operator, string $value): GuestFilter
+    function firstDate(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "firstDate");
         return $this;
@@ -43,9 +43,9 @@ class GuestFilter extends BaseFilter
      * Значение интервала для поля "дата последнего захода на сайт"
      * @param Operator $operator
      * @param string $value
-     * @return GuestFilter
+     * @return Guest
      */
-    function lastDate(Operator $operator, string $value): GuestFilter
+    function lastDate(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "lastDate");
         return $this;
@@ -57,7 +57,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function periodDate(Operator $operator, string $value): GuestFilter
+    function periodDate(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "periodDate");
         return $this;
@@ -69,7 +69,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function siteId(Operator $operator, string $value): GuestFilter
+    function siteId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "siteId");
         return $this;
@@ -81,7 +81,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function firstSiteId(Operator $operator, string $value): GuestFilter
+    function firstSiteId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "firstSiteId");
         return $this;
@@ -94,7 +94,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function lastSiteId(Operator $operator, string $value): GuestFilter
+    function lastSiteId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "lastSiteId");
         return $this;
@@ -106,7 +106,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function url(Operator $operator, string $value): GuestFilter
+    function url(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "url");
         return $this;
@@ -116,7 +116,7 @@ class GuestFilter extends BaseFilter
      * URL_404 - была ли 404 ошибка на первой странице или на последней странице посещенной посетителем, возможные значения:
      * @return $this
      */
-    function existsUrl404(bool $value): GuestFilter
+    function existsUrl404(bool $value): Guest
     {
         $this->setFilter(Operator::Eq, intval($value), "existsUrl404");
         return $this;
@@ -128,7 +128,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function userAgent(Operator $operator, string $value): GuestFilter
+    function userAgent(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "userAgent");
         return $this;
@@ -140,7 +140,7 @@ class GuestFilter extends BaseFilter
      * false - не приходил никогда ни по одной рекламной кампании(не равной NA / NA).
      * @return $this
      */
-    function isAdv(bool $value): GuestFilter
+    function isAdv(bool $value): Guest
     {
         $this->setFilter(Operator::Eq, intval($value), "isAdv");
         return $this;
@@ -152,7 +152,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function advUuid(Operator $operator, string $value): GuestFilter
+    function advUuid(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "advUuid");
         return $this;
@@ -164,7 +164,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function referer1(Operator $operator, string $value): GuestFilter
+    function referer1(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "referer1");
         return $this;
@@ -176,7 +176,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function referer2(Operator $operator, string $value): GuestFilter
+    function referer2(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "referer2");
         return $this;
@@ -188,7 +188,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function referer3(Operator $operator, string $value): GuestFilter
+    function referer3(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "referer3");
         return $this;
@@ -200,7 +200,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function events(Operator $operator, string $value): GuestFilter
+    function events(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "events");
         return $this;
@@ -213,7 +213,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function sessions(Operator $operator, string $value): GuestFilter
+    function sessions(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "sessions");
         return $this;
@@ -225,7 +225,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function hits(Operator $operator, string $value): GuestFilter
+    function hits(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "hits");
         return $this;
@@ -238,7 +238,7 @@ class GuestFilter extends BaseFilter
      * false - не добавлял
      * @return $this
      */
-    function isAddToFavorites(bool $value): GuestFilter
+    function isAddToFavorites(bool $value): Guest
     {
         $this->setFilter(Operator::Eq, intval($value), "isAddToFavorites");
         return $this;
@@ -250,7 +250,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function ip(Operator $operator, string $value): GuestFilter
+    function ip(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, intval($value), "ip");
         return $this;
@@ -262,7 +262,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function lang(Operator $operator, string $value): GuestFilter
+    function lang(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "lang");
         return $this;
@@ -274,7 +274,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function countryId(Operator $operator, string $value): GuestFilter
+    function countryId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "countryId");
         return $this;
@@ -286,7 +286,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function country(Operator $operator, string $value): GuestFilter
+    function country(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "country");
         return $this;
@@ -298,7 +298,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function user(Operator $operator, string $value): GuestFilter
+    function user(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "user");
         return $this;
@@ -310,7 +310,7 @@ class GuestFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    function userId(Operator $operator, string $value): GuestFilter
+    function userId(Operator $operator, string $value): Guest
     {
         $this->setFilter($operator, $value, "userId");
         return $this;

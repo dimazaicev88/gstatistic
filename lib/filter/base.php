@@ -2,7 +2,7 @@
 
 namespace GStatistics\Filter;
 
-class BaseFilter
+class Base
 {
     protected array $arrFilter = [];
 

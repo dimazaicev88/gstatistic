@@ -4,7 +4,7 @@
 namespace GStatistics\api;
 use GStatistics\filter\SearcherHitFilter;
 
-class GSearcherHit
+class SearcherHit
 {
     static function find(
         SearcherHitFilter $filter,

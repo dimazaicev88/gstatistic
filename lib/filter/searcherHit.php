@@ -1,8 +1,8 @@
 <?php
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class SearcherHitFilter extends BaseFilter
+class SearcherHit extends Base
 {
 
     /**
@@ -12,7 +12,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function hitUuid(Operator $operator, string $value): SearcherHitFilter
+    public function hitUuid(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'hitUuid');
         return $this;
@@ -25,7 +25,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function searcherUuid(Operator $operator, string $value): SearcherHitFilter
+    public function searcherUuid(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'searcherUuid');
         return $this;
@@ -39,7 +39,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function url(Operator $operator, string $value): SearcherHitFilter
+    public function url(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -51,7 +51,7 @@ class SearcherHitFilter extends BaseFilter
      * @param bool $date
      * @return $this
      */
-    public function isUrl404(bool $date): SearcherHitFilter
+    public function isUrl404(bool $date): SearcherHit
     {
         $this->setFilter(Operator::Eq, $date, 'date');
         return $this;
@@ -63,7 +63,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function searcher(Operator $operator, string $value): SearcherHitFilter
+    public function searcher(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'searcher');
         return $this;
@@ -76,7 +76,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function date(Operator $operator, string $value): SearcherHitFilter
+    public function date(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -89,7 +89,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function ip(Operator $operator, string $value): SearcherHitFilter
+    public function ip(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -102,7 +102,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function userAgent(Operator $operator, string $value): SearcherHitFilter
+    public function userAgent(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;
@@ -113,7 +113,7 @@ class SearcherHitFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function siteId(Operator $operator, string $value): SearcherHitFilter
+    public function siteId(Operator $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

@@ -1,7 +1,8 @@
 <?php
 
 namespace GStatistics\api;
-class GStatistics
+
+class Statistics
 {
 
 }

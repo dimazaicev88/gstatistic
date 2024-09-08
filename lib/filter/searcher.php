@@ -1,9 +1,9 @@
 <?php
 
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class SearcherFilter extends BaseFilter
+class Searcher extends Base
 {
 
     /**
@@ -11,9 +11,9 @@ class SearcherFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return SearcherFilter
+     * @return Searcher
      */
-    public function uuid(Operator $operator, string $value): SearcherFilter
+    public function uuid(Operator $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -26,7 +26,7 @@ class SearcherFilter extends BaseFilter
      * @param bool $value
      * @return $this
      */
-    public function active(Operator $operator, bool $value): SearcherFilter
+    public function active(Operator $operator, bool $value): Searcher
     {
         $this->setFilter($operator, $value, 'active');
         return $this;
@@ -37,9 +37,9 @@ class SearcherFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param bool $value
-     * @return SearcherFilter
+     * @return Searcher
      */
-    public function saveStatistic(Operator $operator, bool $value): SearcherFilter
+    public function saveStatistic(Operator $operator, bool $value): Searcher
     {
         $this->setFilter($operator, $value, 'saveStatistic');
         return $this;
@@ -52,7 +52,7 @@ class SearcherFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function hits(Operator $operator, string $value): SearcherFilter
+    public function hits(Operator $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'hits');
         return $this;
@@ -66,7 +66,7 @@ class SearcherFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function period(Operator $operator, string $value): SearcherFilter
+    public function period(Operator $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'period');
         return $this;
@@ -79,7 +79,7 @@ class SearcherFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function name(Operator $operator, string $value): SearcherFilter
+    public function name(Operator $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'name');
         return $this;
@@ -92,7 +92,7 @@ class SearcherFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function userAgent(Operator $operator, string $value): SearcherFilter
+    public function userAgent(Operator $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;

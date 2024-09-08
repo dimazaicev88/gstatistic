@@ -1,8 +1,8 @@
 <?php
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class Session extends BaseFilter
+class Session extends Base
 {
 
     /**

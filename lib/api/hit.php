@@ -3,7 +3,7 @@
 namespace GStatistics\api;
 use GStatistics\filter\HitFilter;
 
-class GHit
+class Hit
 {
 
     /**

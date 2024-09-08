@@ -1,7 +1,8 @@
 <?php
 
 namespace GStatistics\api;
-class GStatEvent
+
+class StatEvent
 {
 
     static function getGID()

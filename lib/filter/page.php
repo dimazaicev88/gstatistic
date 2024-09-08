@@ -1,8 +1,8 @@
 <?php
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class PageFilter extends BaseFilter
+class Page extends Base
 {
 
     /**
@@ -10,9 +10,9 @@ class PageFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PageFilter
+     * @return Page
      */
-    public function date(Operator $operator, string $value): PageFilter
+    public function date(Operator $operator, string $value): Page
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -23,9 +23,9 @@ class PageFilter extends BaseFilter
      * true - в результирующем списке должны быть только каталоги;
      * false - в результирующем списке должны быть только страницы.
      * @param bool $value
-     * @return PageFilter
+     * @return Page
      */
-    public function isDir(bool $value): PageFilter
+    public function isDir(bool $value): Page
     {
         $this->setFilter(Operator::Eq, $value, 'isDir');
         return $this;
@@ -36,9 +36,9 @@ class PageFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PageFilter
+     * @return Page
      */
-    public function url(Operator $operator, string $value): PageFilter
+    public function url(Operator $operator, string $value): Page
     {
         $this->setFilter($operator, $value, 'url');
         return $this;
@@ -48,9 +48,9 @@ class PageFilter extends BaseFilter
      * Была ли 404 ошибка на странице, возможные значения:
      *
      * @param bool $value
-     * @return PageFilter
+     * @return Page
      */
-    public function isUrl404(bool $value): PageFilter
+    public function isUrl404(bool $value): Page
     {
         $this->setFilter(Operator::Eq, $value, 'isUrl404');
         return $this;
@@ -62,9 +62,9 @@ class PageFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param bool $value
-     * @return PageFilter
+     * @return Page
      */
-    public function advUuid(Operator $operator, bool $value): PageFilter
+    public function advUuid(Operator $operator, bool $value): Page
     {
         $this->setFilter($operator, $value, 'advUuid');
         return $this;
@@ -79,9 +79,9 @@ class PageFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param AdvDataType $value
-     * @return PageFilter
+     * @return Page
      */
-    public function advDataType(Operator $operator, AdvDataType $value): PageFilter
+    public function advDataType(Operator $operator, AdvDataType $value): Page
     {
         $this->setFilter($operator, $value->value, 'advDataType');
         return $this;
@@ -92,9 +92,9 @@ class PageFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param bool $value
-     * @return PageFilter
+     * @return Page
      */
-    public function siteId(Operator $operator, bool $value): PageFilter
+    public function siteId(Operator $operator, bool $value): Page
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

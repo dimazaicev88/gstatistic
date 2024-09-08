@@ -4,7 +4,7 @@
 namespace GStatistics\api;
 use GStatistics\filter\RefererFilter;
 
-class GReferer
+class Referer
 {
 
     public static function find(

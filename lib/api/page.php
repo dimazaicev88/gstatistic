@@ -3,7 +3,7 @@
 namespace GStatistics\api;
 use GStatistics\filter\PageFilter;
 
-class GPage
+class Page
 {
 
     /**

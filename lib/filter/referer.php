@@ -1,8 +1,8 @@
 <?php
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class RefererFilter extends BaseFilter
+class Referer extends Base
 {
 
     /**
@@ -12,7 +12,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function uuid(Operator $operator, string $value): RefererFilter
+    public function uuid(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -24,7 +24,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function sessionUuid(Operator $operator, string $value): RefererFilter
+    public function sessionUuid(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'sessionUuid');
         return $this;
@@ -37,7 +37,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function date(Operator $operator, string $value): RefererFilter
+    public function date(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -49,7 +49,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function fromProtocol(Operator $operator, string $value): RefererFilter
+    public function fromProtocol(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'fromProtocol');
         return $this;
@@ -62,7 +62,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function fromDomain(Operator $operator, string $value): RefererFilter
+    public function fromDomain(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'fromDomain');
         return $this;
@@ -75,7 +75,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function fromPage(Operator $operator, string $value): RefererFilter
+    public function fromPage(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'fromPage');
         return $this;
@@ -88,7 +88,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function from(Operator $operator, string $value): RefererFilter
+    public function from(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'from');
         return $this;
@@ -101,7 +101,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function to(Operator $operator, string $value): RefererFilter
+    public function to(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'to');
         return $this;
@@ -113,7 +113,7 @@ class RefererFilter extends BaseFilter
      * @param bool $value
      * @return $this
      */
-    public function to404(bool $value): RefererFilter
+    public function to404(bool $value): Referer
     {
         $this->setFilter(Operator::Eq, $value, 'to404');
         return $this;
@@ -127,7 +127,7 @@ class RefererFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function siteId(Operator $operator, string $value): RefererFilter
+    public function siteId(Operator $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

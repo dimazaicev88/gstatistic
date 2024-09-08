@@ -1,7 +1,8 @@
 <?php
 
 namespace GStatistics\api;
-class GPhrase
+
+class Phrase
 {
 
     static function find()

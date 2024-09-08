@@ -1,9 +1,9 @@
 <?php
 
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class PhraseFilter extends BaseFilter
+class Phrase extends Base
 {
 
 
@@ -12,9 +12,9 @@ class PhraseFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PhraseFilter
+     * @return Phrase
      */
-    public function uuid(Operator $operator, string $value): PhraseFilter
+    public function uuid(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -25,9 +25,9 @@ class PhraseFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PhraseFilter
+     * @return Phrase
      */
-    public function sessionUuid(Operator $operator, string $value): PhraseFilter
+    public function sessionUuid(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'sessionUuid');
         return $this;
@@ -38,9 +38,9 @@ class PhraseFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PhraseFilter
+     * @return Phrase
      */
-    public function searcherUuid(Operator $operator, string $value): PhraseFilter
+    public function searcherUuid(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'searcherUuid');
         return $this;
@@ -51,9 +51,9 @@ class PhraseFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return PhraseFilter
+     * @return Phrase
      */
-    public function refererUuid(Operator $operator, string $value): PhraseFilter
+    public function refererUuid(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'refererUuid');
         return $this;
@@ -66,7 +66,7 @@ class PhraseFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function searcher(Operator $operator, string $value): PhraseFilter
+    public function searcher(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'searcher');
         return $this;
@@ -79,7 +79,7 @@ class PhraseFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function date(Operator $operator, string $value): PhraseFilter
+    public function date(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -92,7 +92,7 @@ class PhraseFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function phrase(Operator $operator, string $value): PhraseFilter
+    public function phrase(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'phrase');
         return $this;
@@ -105,7 +105,7 @@ class PhraseFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function to(Operator $operator, string $value): PhraseFilter
+    public function to(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'to');
         return $this;
@@ -117,7 +117,7 @@ class PhraseFilter extends BaseFilter
      * @param bool $value
      * @return $this
      */
-    public function to404(bool $value): PhraseFilter
+    public function to404(bool $value): Phrase
     {
         $this->setFilter(Operator::Eq, $value, 'to404');
         return $this;
@@ -130,7 +130,7 @@ class PhraseFilter extends BaseFilter
      * @param string $value
      * @return $this
      */
-    public function siteId(Operator $operator, string $value): PhraseFilter
+    public function siteId(Operator $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;
@@ -139,7 +139,7 @@ class PhraseFilter extends BaseFilter
 //GROUP - группировка результирующего списка, возможные значения:
 //P - группировка по поисковой фразе;
 //S - группировка по поисковой системе.
-//    public function group(Operator $operator, string $date): PhraseFilter
+//    public function group(Operator $operator, string $date): Phrase
 //    {
 //        $this->setFilter($operator, $date, 'date');
 //        return $this;

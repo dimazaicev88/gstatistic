@@ -1,17 +1,17 @@
 <?php
 
-namespace GStatistics\filter;
+namespace GStatistics\Filter;
 
-class HitFilter extends BaseFilter
+class Hit extends Base
 {
 
     /**
      * ID - UUID хита;
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function uuid(Operator $operator, string $value): HitFilter
+    function uuid(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -22,9 +22,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function guestUuid(Operator $operator, string $value): HitFilter
+    function guestUuid(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'guestUuid');
         return $this;
@@ -34,9 +34,9 @@ class HitFilter extends BaseFilter
      * Флаг "новый посетитель"
      *
      * @param bool $value
-     * @return HitFilter
+     * @return Hit
      */
-    function isNewGuest(bool $value): HitFilter
+    function isNewGuest(bool $value): Hit
     {
         $this->setFilter(Operator::Eq, $value, 'isNewGuest');
         return $this;
@@ -46,9 +46,9 @@ class HitFilter extends BaseFilter
      * UUID сессии
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function sessionUuid(Operator $operator, string $value): HitFilter
+    function sessionUuid(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'sessionUuid');
         return $this;
@@ -59,9 +59,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function stopListUuid(Operator $operator, string $value): HitFilter
+    function stopListUuid(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'stopListUuid');
         return $this;
@@ -72,9 +72,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function url(Operator $operator, string $value): HitFilter
+    function url(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'url');
         return $this;
@@ -84,9 +84,9 @@ class HitFilter extends BaseFilter
      * Была ли 404 ошибка на странице хита
      *
      * @param bool $value
-     * @return HitFilter
+     * @return Hit
      */
-    function isUrl404(bool $value): HitFilter
+    function isUrl404(bool $value): Hit
     {
         $this->setFilter(Operator::Eq, $value, 'isUrl404');
         return $this;
@@ -97,9 +97,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param int $value
-     * @return HitFilter
+     * @return Hit
      */
-    function userId(Operator $operator, int $value): HitFilter
+    function userId(Operator $operator, int $value): Hit
     {
         $this->setFilter($operator, $value, 'userId');
         return $this;
@@ -109,9 +109,9 @@ class HitFilter extends BaseFilter
      * Флаг "был ли авторизован посетитель в момент хита или до этого"
      *
      * @param bool $value
-     * @return HitFilter
+     * @return Hit
      */
-    function isRegistered(bool $value): HitFilter
+    function isRegistered(bool $value): Hit
     {
         $this->setFilter(Operator::Eq, $value, 'isRegistered');
         return $this;
@@ -122,9 +122,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function date(Operator $operator, string $value): HitFilter
+    function date(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -135,9 +135,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function ip(Operator $operator, string $value): HitFilter
+    function ip(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'ip');
         return $this;
@@ -148,9 +148,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function userAgent(Operator $operator, string $value): HitFilter
+    function userAgent(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;
@@ -161,9 +161,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function countryId(Operator $operator, string $value): HitFilter
+    function countryId(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'countryId');
         return $this;
@@ -174,9 +174,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function country(Operator $operator, string $value): HitFilter
+    function country(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'country');
         return $this;
@@ -187,9 +187,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param string $value
-     * @return HitFilter
+     * @return Hit
      */
-    function cookie(Operator $operator, string $value): HitFilter
+    function cookie(Operator $operator, string $value): Hit
     {
         $this->setFilter($operator, $value, 'cookie');
         return $this;
@@ -199,9 +199,9 @@ class HitFilter extends BaseFilter
      * Содержимое Cookie в момент хита
      *
      * @param bool $value
-     * @return HitFilter
+     * @return Hit
      */
-    function isStop(bool $value): HitFilter
+    function isStop(bool $value): Hit
     {
         $this->setFilter(Operator::Eq, $value, 'isStop');
         return $this;
@@ -212,9 +212,9 @@ class HitFilter extends BaseFilter
      *
      * @param Operator $operator
      * @param bool $value
-     * @return HitFilter
+     * @return Hit
      */
-    function siteId(Operator $operator, bool $value): HitFilter
+    function siteId(Operator $operator, bool $value): Hit
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

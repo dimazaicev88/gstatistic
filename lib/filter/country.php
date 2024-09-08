@@ -1,7 +1,8 @@
 <?php
 
 namespace GStatistics\Filter;
-class City
+
+class Country
 {
 
 }

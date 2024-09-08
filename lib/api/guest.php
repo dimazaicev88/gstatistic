@@ -3,7 +3,7 @@
 namespace GStatistics\api;
 use GStatistics\filter\GuestFilter;
 
-class GGuest
+class Guest
 {
 
     /**

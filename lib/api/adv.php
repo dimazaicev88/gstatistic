@@ -4,7 +4,7 @@
 namespace GStatistics\api;
 use GStatistics\filter\AdvFilter;
 
-class GAdv
+class Adv
 {
 
     /**

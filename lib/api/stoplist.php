@@ -1,7 +1,8 @@
 <?php
 
 namespace GStatistics\api;
-class GStoplist
+
+class Stoplist
 {
 
     function CheckFields()

@@ -3,7 +3,7 @@
 namespace GStatistics\api;
 use GStatistics\filter\PathFilter;
 
-class GPath
+class Path
 {
 
     public static function find(
