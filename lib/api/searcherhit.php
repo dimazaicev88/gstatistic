@@ -1,13 +1,12 @@
 <?php
 
 
-namespace GStatistics\api;
-use GStatistics\filter\SearcherHitFilter;
+namespace GStatistics\Api;
 
 class SearcherHit
 {
     static function find(
-        SearcherHitFilter $filter,
+        \GStatistics\Filter\SearcherHit $filter,
         array             $fields = [],
         array             $order = [],
         string            $orderBy = "",

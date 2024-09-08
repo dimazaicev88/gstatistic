@@ -1,11 +1,11 @@
 <?php
 
-namespace GStatistics\api;
+namespace GStatistics\Api;
 
 class Stoplist
 {
 
-    function CheckFields()
+    function CheckFields(): true
     {
 
         return true;

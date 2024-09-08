@@ -1,13 +1,13 @@
 <?php
 
-namespace GStatistics\api;
-use GStatistics\filter\GuestFilter;
+namespace GStatistics\Api;
+
 
 class Guest
 {
 
     /**
-     * @param GuestFilter $filter
+     * @param \GStatistics\Filter\Guest $filter
      * @param array $fields
      * @param array $order
      * @param string $orderBy
@@ -16,12 +16,12 @@ class Guest
      * @return array
      */
     static function find(
-        GuestFilter $filter,
-        array       $fields = [],
-        array       $order = [],
-        string      $orderBy = "",
-        int         $skip = 0,
-        int         $limit = 0
+        \GStatistics\Filter\Guest $filter,
+        array                     $fields = [],
+        array                     $order = [],
+        string                    $orderBy = "",
+        int                       $skip = 0,
+        int                       $limit = 0
     ): array
     {
         return [];

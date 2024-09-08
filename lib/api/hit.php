@@ -1,13 +1,12 @@
 <?php
 
-namespace GStatistics\api;
-use GStatistics\filter\HitFilter;
+namespace GStatistics\Api;
 
 class Hit
 {
 
     /**
-     * @param HitFilter $filter
+     * @param \GStatistics\Filter\Hit $filter
      * @param array $fields
      * @param array $order
      * @param string $orderBy
@@ -16,7 +15,7 @@ class Hit
      * @return array
      */
     public static function find(
-        HitFilter $filter,
+        \GStatistics\Filter\Hit $filter,
         array     $fields = [],
         array     $order = [],
         string    $orderBy = "",

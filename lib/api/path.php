@@ -1,13 +1,12 @@
 <?php
 
-namespace GStatistics\api;
-use GStatistics\filter\PathFilter;
+namespace GStatistics\Api;
 
 class Path
 {
 
     public static function find(
-        PathFilter $filter,
+        \GStatistics\Filter\Path $filter,
         array      $fields = [],
         array      $order = [],
         string     $orderBy = "",

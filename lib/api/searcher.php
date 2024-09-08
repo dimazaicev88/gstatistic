@@ -1,6 +1,6 @@
 <?php
 
-namespace GStatistics\api;
+namespace GStatistics\Api;
 
 class Searcher
 {

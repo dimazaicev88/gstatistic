@@ -1,14 +1,13 @@
 <?php
 
 
-namespace GStatistics\api;
-use GStatistics\filter\RefererFilter;
+namespace GStatistics\Api;
 
 class Referer
 {
 
     public static function find(
-        RefererFilter $filter,
+        \GStatistics\Filter\Referer $filter,
         array         $fields = [],
         array         $order = [],
         string        $orderBy = "",

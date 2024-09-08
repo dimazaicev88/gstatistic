@@ -1,8 +1,7 @@
 <?php
 
 
-namespace GStatistics\api;
-use GStatistics\filter\AdvFilter;
+namespace GStatistics\Api;
 
 class Adv
 {
@@ -19,7 +18,7 @@ class Adv
     }
 
     /**
-     * @param AdvFilter $filter
+     * @param \GStatistics\Filter\Adv $filter
      * @param array $fields
      * @param array $order
      * @param string $orderBy
@@ -28,14 +27,16 @@ class Adv
      * @return array
      */
     public static function find(
-        AdvFilter $filter,
-        array     $fields = [],
-        array     $order = [],
-        string    $orderBy = "",
-        int       $skip = 0,
-        int       $limit = 0
+        \GStatistics\Filter\Adv $filter,
+        array                   $fields = [],
+        array                   $order = [],
+        string                  $orderBy = "",
+        int                     $skip = 0,
+        int                     $limit = 0
     ): array
     {
+
+
         return [];
     }
 
