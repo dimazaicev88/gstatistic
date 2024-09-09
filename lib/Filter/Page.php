@@ -8,11 +8,11 @@ class Page extends Base
     /**
      * Значение для интервала даты за которую необходимо получить данные
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Page
      */
-    public function date(Operator $operator, string $value): Page
+    public function date(Operators $operator, string $value): Page
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -27,18 +27,18 @@ class Page extends Base
      */
     public function isDir(bool $value): Page
     {
-        $this->setFilter(Operator::Eq, $value, 'isDir');
+        $this->setFilter(Operators::Eq, $value, 'isDir');
         return $this;
     }
 
     /**
      * Полный путь к странице (каталогу) для которой необходимо вывести данные
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Page
      */
-    public function url(Operator $operator, string $value): Page
+    public function url(Operators $operator, string $value): Page
     {
         $this->setFilter($operator, $value, 'url');
         return $this;
@@ -52,7 +52,7 @@ class Page extends Base
      */
     public function isUrl404(bool $value): Page
     {
-        $this->setFilter(Operator::Eq, $value, 'isUrl404');
+        $this->setFilter(Operators::Eq, $value, 'isUrl404');
         return $this;
     }
 
@@ -60,11 +60,11 @@ class Page extends Base
      * UUID рекламной кампании (РК), данное поле позволяет отфильтровать только те страницы (каталоги) которые были открыты
      * только посетителями по данной РК и соответственно получить данные по посещаемости страницы (каталога) url только этих посетителей;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param bool $value
      * @return Page
      */
-    public function advUuid(Operator $operator, bool $value): Page
+    public function advUuid(Operators $operator, bool $value): Page
     {
         $this->setFilter($operator, $value, 'advUuid');
         return $this;
@@ -77,11 +77,11 @@ class Page extends Base
      * B - только по возвратам по рекламной кампании;
      * S - сумма по прямым заходам и возвратам.
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param AdvDataType $value
      * @return Page
      */
-    public function advDataType(Operator $operator, AdvDataType $value): Page
+    public function advDataType(Operators $operator, AdvDataType $value): Page
     {
         $this->setFilter($operator, $value->value, 'advDataType');
         return $this;
@@ -90,11 +90,11 @@ class Page extends Base
     /**
      * ID сайта
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param bool $value
      * @return Page
      */
-    public function siteId(Operator $operator, bool $value): Page
+    public function siteId(Operators $operator, bool $value): Page
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

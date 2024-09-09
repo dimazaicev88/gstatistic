@@ -8,11 +8,11 @@ class Session extends Base
     /**
      * UUID сессии;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function uuid(Operator $operator, string $value): Session
+    public function uuid(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -21,11 +21,11 @@ class Session extends Base
     /**
      * UUID посетителя;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function guestUuid(Operator $operator, string $value): Session
+    public function guestUuid(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'guestUuid');
         return $this;
@@ -39,18 +39,18 @@ class Session extends Base
      */
     public function isNewGuest(bool $value): Session
     {
-        $this->setFilter(Operator::Eq, $value, 'isNewGuest');
+        $this->setFilter(Operators::Eq, $value, 'isNewGuest');
         return $this;
     }
 
     /**
      * ID пользователя под которым последний раз был авторизован посетитель;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function userId(Operator $operator, string $value): Session
+    public function userId(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'userId');
         return $this;
@@ -59,13 +59,13 @@ class Session extends Base
     /**
      * Флаг "был ли посетитель авторизован в данной сессии"
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param bool $value
      * @return Session
      */
-    public function isUserAuth(Operator $operator, bool $value): Session
+    public function isUserAuth(Operators $operator, bool $value): Session
     {
-        $this->setFilter(Operator::Eq, $value, 'isUserAuth');
+        $this->setFilter(Operators::Eq, $value, 'isUserAuth');
         return $this;
     }
 
@@ -78,7 +78,7 @@ class Session extends Base
      */
     public function isRegistered(bool $value): Session
     {
-        $this->setFilter(Operator::Eq, $value, 'isRegistered');
+        $this->setFilter(Operators::Eq, $value, 'isRegistered');
         return $this;
     }
 
@@ -90,18 +90,18 @@ class Session extends Base
      */
     public function isFavorites(bool $value): Session
     {
-        $this->setFilter(Operator::Eq, $value, 'isFavorites');
+        $this->setFilter(Operators::Eq, $value, 'isFavorites');
         return $this;
     }
 
     /**
      * Количество событий данной сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return Session
      */
-    public function events(Operator $operator, int $value): Session
+    public function events(Operators $operator, int $value): Session
     {
         $this->setFilter($operator, $value, 'events');
         return $this;
@@ -111,11 +111,11 @@ class Session extends Base
     /**
      * Количество хитов данной сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return Session
      */
-    public function hits(Operator $operator, int $value): Session
+    public function hits(Operators $operator, int $value): Session
     {
         $this->setFilter($operator, $value, 'hits');
         return $this;
@@ -129,18 +129,18 @@ class Session extends Base
      */
     public function isAdv(bool $value): Session
     {
-        $this->setFilter(Operator::Eq, $value, 'isAdv');
+        $this->setFilter(Operators::Eq, $value, 'isAdv');
         return $this;
     }
 
     /**
      * UUID рекламной кампании;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function advUuid(Operator $operator, string $value): Session
+    public function advUuid(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'advUuid');
         return $this;
@@ -149,11 +149,11 @@ class Session extends Base
     /**
      * Флаг "возврат по рекламной кампании"
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param bool $value
      * @return Session
      */
-    public function isAdvBack(Operator $operator, bool $value): Session
+    public function isAdvBack(Operators $operator, bool $value): Session
     {
         $this->setFilter($operator, $value, 'isAdvBack');
         return $this;
@@ -162,11 +162,11 @@ class Session extends Base
     /**
      * Идентификатор referer1 рекламной кампании
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function referer1(Operator $operator, string $value): Session
+    public function referer1(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'referer1');
         return $this;
@@ -175,11 +175,11 @@ class Session extends Base
     /**
      * Идентификатор referer2 рекламной кампании
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function referer2(Operator $operator, string $value): Session
+    public function referer2(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'referer2');
         return $this;
@@ -188,11 +188,11 @@ class Session extends Base
     /**
      * Дополнительный параметр referer3 рекламной кампании;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function referer3(Operator $operator, string $value): Session
+    public function referer3(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'referer3');
         return $this;
@@ -201,11 +201,11 @@ class Session extends Base
     /**
      * Флаг "попал ли посетитель под какую либо запись стоп-листа"
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function stop(Operator $operator, string $value): Session
+    public function stop(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'stop');
         return $this;
@@ -214,11 +214,11 @@ class Session extends Base
     /**
      * ID записи стоп-листа под которую попал посетитель
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function stopListId(Operator $operator, string $value): Session
+    public function stopListId(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'stopListId');
         return $this;
@@ -227,11 +227,11 @@ class Session extends Base
     /**
      * ID страны посетителя
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function countryId(Operator $operator, string $value): Session
+    public function countryId(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'countryId');
         return $this;
@@ -240,11 +240,11 @@ class Session extends Base
     /**
      * Наименование страны посетителя
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function country(Operator $operator, string $value): Session
+    public function country(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'country');
         return $this;
@@ -253,11 +253,11 @@ class Session extends Base
     /**
      * IP адрес посетителя на последнем хите сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function ip(Operator $operator, string $value): Session
+    public function ip(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'ip');
         return $this;
@@ -266,11 +266,11 @@ class Session extends Base
     /**
      * UserAgent посетителя
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function userAgent(Operator $operator, string $value): Session
+    public function userAgent(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;
@@ -279,11 +279,11 @@ class Session extends Base
     /**
      * Значение интервала для поля "первого хита сессии"
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function date(Operator $operator, string $value): Session
+    public function date(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -292,11 +292,11 @@ class Session extends Base
     /**
      * Первая страница сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function urlTo(Operator $operator, string $value): Session
+    public function urlTo(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'urlTo');
         return $this;
@@ -310,18 +310,18 @@ class Session extends Base
      */
     public function isUrlTo404(bool $value): Session
     {
-        $this->setFilter(Operator::Eq, $value, 'isUrlTo404');
+        $this->setFilter(Operators::Eq, $value, 'isUrlTo404');
         return $this;
     }
 
     /**
      * ID сайта на первом хите сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function firstSiteId(Operator $operator, string $value): Session
+    public function firstSiteId(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'firstSiteId');
         return $this;
@@ -331,11 +331,11 @@ class Session extends Base
     /**
      * Последняя страница сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function urlLast(Operator $operator, string $value): Session
+    public function urlLast(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'urlLast');
         return $this;
@@ -350,18 +350,18 @@ class Session extends Base
      */
     public function isUrlLast404(bool $value): Session
     {
-        $this->setFilter(Operator::Eq, $value, 'isUrlLast404');
+        $this->setFilter(Operators::Eq, $value, 'isUrlLast404');
         return $this;
     }
 
     /**
      * ID сайта на последнем хите сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Session
      */
-    public function lastSiteId(Operator $operator, string $value): Session
+    public function lastSiteId(Operators $operator, string $value): Session
     {
         $this->setFilter($operator, $value, 'lastSiteId');
         return $this;

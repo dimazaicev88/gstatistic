@@ -2,6 +2,9 @@
 
 namespace GStatistics\Api;
 
+use Bitrix\Main\Config\Option;
+use GStatistics\Http\HttpClient;
+
 class Hit
 {
 
@@ -16,13 +19,20 @@ class Hit
      */
     public static function find(
         \GStatistics\Filter\Hit $filter,
-        array     $fields = [],
-        array     $order = [],
-        string    $orderBy = "",
-        int       $skip = 0,
-        int       $limit = 0
+        array                   $fields = [''],
+        array                   $order = [''],
+        string                  $orderBy = "",
+        int                     $skip = 0,
+        int                     $limit = 0
     ): array
     {
+        $arrayFilter = $filter->getFilter();
+        $arrayFilter['fields'] = $fields;
+        $arrayFilter['skip'] = $skip;
+        $arrayFilter['limit'] = $limit;
+        $arrayFilter['orderBy'] = $orderBy;
+        $arrayFilter['order'] = $order;
+        var_dump(HttpClient::post(Option::get("gstatistic", "server_url") . 'v1/hit/filter', $arrayFilter));
         return [];
     }
 

@@ -9,11 +9,11 @@ class Searcher extends Base
     /**
      * UUID поисковой системы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Searcher
      */
-    public function uuid(Operator $operator, string $value): Searcher
+    public function uuid(Operators $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -22,11 +22,11 @@ class Searcher extends Base
     /**
      * Флаг активности:
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param bool $value
      * @return $this
      */
-    public function active(Operator $operator, bool $value): Searcher
+    public function active(Operators $operator, bool $value): Searcher
     {
         $this->setFilter($operator, $value, 'active');
         return $this;
@@ -35,11 +35,11 @@ class Searcher extends Base
     /**
      * Флаг "сохранять хиты поисковой системы", возможные значения
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param bool $value
      * @return Searcher
      */
-    public function saveStatistic(Operator $operator, bool $value): Searcher
+    public function saveStatistic(Operators $operator, bool $value): Searcher
     {
         $this->setFilter($operator, $value, 'saveStatistic');
         return $this;
@@ -48,11 +48,11 @@ class Searcher extends Base
     /**
      * Количество хитов;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function hits(Operator $operator, string $value): Searcher
+    public function hits(Operators $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'hits');
         return $this;
@@ -62,11 +62,11 @@ class Searcher extends Base
     /**
      * Начальное значение для произвольного периода
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function period(Operator $operator, string $value): Searcher
+    public function period(Operators $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'period');
         return $this;
@@ -75,11 +75,11 @@ class Searcher extends Base
     /**
      * Наименование поисковой системы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function name(Operator $operator, string $value): Searcher
+    public function name(Operators $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'name');
         return $this;
@@ -88,11 +88,11 @@ class Searcher extends Base
     /**
      * UserAgent поисковой системы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function userAgent(Operator $operator, string $value): Searcher
+    public function userAgent(Operators $operator, string $value): Searcher
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;

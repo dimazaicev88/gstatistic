@@ -5,7 +5,11 @@ namespace GStatistics\Api;
 use Bitrix\Main\ArgumentOutOfRangeException;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
+use Bitrix\Main\HttpResponse;
+use Bitrix\Main\Web\Cookie;
+use Exception;
 use GStatistics\Http\HttpClient;
+use JsonException;
 
 
 class KeepStatistic
@@ -14,6 +18,7 @@ class KeepStatistic
 
     /**
      * @throws ArgumentOutOfRangeException
+     * @throws JsonException
      */
     static function Keep(): void
     {
@@ -24,7 +29,7 @@ class KeepStatistic
         $isUserAuth = false;
         $siteId = "";
 
-        Option::set("gstatistic", "server_url", "http://127.0.0.1:9008");
+
         $serverUrl = Option::get("gstatistic", "server_url");
         $ctx = Context::getCurrent();
 
@@ -47,7 +52,7 @@ class KeepStatistic
             'referer' => $_SERVER['HTTP_REFERER'],
             'ip' => $_SERVER['REMOTE_ADDR'],
             'userAgent' => $_SERVER['HTTP_USER_AGENT'],
-            'userId' => $userId,
+            'userId' => intval($userId),
             'userLogin' => $userLogin,
             'isUserAuth' => $isUserAuth,
             'httpXForwardedFor' => $_SERVER['HTTP_X_FORWARDED_FOR'],
@@ -55,7 +60,7 @@ class KeepStatistic
             'siteId' => $siteId,
             'lang' => $_SERVER["HTTP_ACCEPT_LANGUAGE"],
             'method' => $_SERVER["REQUEST_METHOD"],
-            'cookies' => $_COOKIE,
+            'cookies' => json_encode($_COOKIE, JSON_UNESCAPED_UNICODE),
             'isFavorite' => isset($_SESSION["SESS_ADD_TO_FAVORITES"]) && $_SESSION["SESS_ADD_TO_FAVORITES"] == "Y",
         ];
 
@@ -67,6 +72,14 @@ class KeepStatistic
             $data['event3'] = $event3;
         }
 
-        var_dump(HttpClient::post($serverUrl, $data));
+        try {
+            $answer = json_decode(json: HttpClient::post($serverUrl . 'statistic/add', $data), associative: true, flags: JSON_THROW_ON_ERROR);
+            $ctx->getResponse()->addCookie(
+                new Cookie(name: "guestUuid", value: $answer['guestUuid'], addPrefix: false)
+            );
+            var_dump($answer);
+        } catch (Exception $exception) {
+            var_dump($exception->getMessage());
+        }
     }
 }

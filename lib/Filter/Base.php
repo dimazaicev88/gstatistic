@@ -6,9 +6,9 @@ class Base
 {
     protected array $arrFilter = [];
 
-    protected function setFilter(Operator $operator, mixed $value, string $field): void
+    protected function setFilter(Operators $operator, mixed $value, string $field): void
     {
-        $this->arrFilter[] = [
+        $this->arrFilter['operators'][] = [
             'operator' => $operator->value,
             'value' => $value,
             'field' => $field
@@ -21,7 +21,7 @@ class Base
      */
     public function or(): static
     {
-        $this->setFilter(Operator::Or, '', '');
+        $this->setFilter(Operators::Or, '', '');
         return $this;
     }
 
@@ -32,8 +32,14 @@ class Base
      */
     public function and(): static
     {
-        $this->setFilter(Operator::And, '', '');
+        $this->setFilter(Operators::And, '', '');
         return $this;
+    }
+
+
+    public function getFilter(): array
+    {
+        return $this->arrFilter;
     }
 
     public function build(): string

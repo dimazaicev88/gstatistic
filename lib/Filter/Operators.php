@@ -4,7 +4,7 @@ namespace GStatistics\Filter;
 /**
  * Comparison Operators
  */
-enum Operator: string
+enum Operators: string
 {
     case Eq = '=';
     case NotEq = '<>';

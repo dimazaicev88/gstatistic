@@ -8,11 +8,11 @@ class StopList extends Base
     /**
      * UUID записи стоп-листа
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function uuid(Operator $operator, string $value): StopList
+    public function uuid(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -21,11 +21,11 @@ class StopList extends Base
     /**
      * Время начала активности записи
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function dateStart(Operator $operator, string $value): StopList
+    public function dateStart(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'dateStart');
         return $this;
@@ -34,11 +34,11 @@ class StopList extends Base
     /**
      * Время окончания активности записи
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function dateEnd(Operator $operator, string $value): StopList
+    public function dateEnd(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'dateEnd');
         return $this;
@@ -53,7 +53,7 @@ class StopList extends Base
      */
     public function active(bool $value): StopList
     {
-        $this->setFilter(Operator::Eq, $value, 'active');
+        $this->setFilter(Operators::Eq, $value, 'active');
         return $this;
     }
 
@@ -65,18 +65,18 @@ class StopList extends Base
      */
     public function saveStatistic(bool $value): StopList
     {
-        $this->setFilter(Operator::Eq, $value, 'saveStatistic');
+        $this->setFilter(Operators::Eq, $value, 'saveStatistic');
         return $this;
     }
 
     /**
      * Октет 1 IP адреса
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function ip1(Operator $operator, string $value): StopList
+    public function ip1(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip1');
         return $this;
@@ -85,11 +85,11 @@ class StopList extends Base
     /**
      * Октет 2 IP адреса
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function ip2(Operator $operator, string $value): StopList
+    public function ip2(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip2');
         return $this;
@@ -98,11 +98,11 @@ class StopList extends Base
     /**
      * Октет 3 IP адреса
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function ip3(Operator $operator, string $value): StopList
+    public function ip3(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip3');
         return $this;
@@ -111,11 +111,11 @@ class StopList extends Base
     /**
      * Октет 4 IP адреса
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function ip4(Operator $operator, string $value): StopList
+    public function ip4(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'ip4');
         return $this;
@@ -124,11 +124,11 @@ class StopList extends Base
     /**
      * Ссылающаяся страница, с которой приходит посетитель
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function urlFrom(Operator $operator, string $value): StopList
+    public function urlFrom(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'urlFrom');
         return $this;
@@ -138,11 +138,11 @@ class StopList extends Base
     /**
      * UserAgent посетителя
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function userAgent(Operator $operator, string $value): StopList
+    public function userAgent(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;
@@ -152,11 +152,11 @@ class StopList extends Base
     /**
      * Текст сообщения которое будет выдано посетителю сайта, в случае его попадания под данную запись стоп-листа
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function message(Operator $operator, string $value): StopList
+    public function message(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'message');
         return $this;
@@ -165,11 +165,11 @@ class StopList extends Base
     /**
      * Административный комментарий, используется как правило для указания причин создания данной записи
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function comments(Operator $operator, string $value): StopList
+    public function comments(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'comments');
         return $this;
@@ -179,11 +179,11 @@ class StopList extends Base
     /**
      * Страница (или ее часть) на которую приходит посетитель
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function urlTo(Operator $operator, string $value): StopList
+    public function urlTo(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'urlTo');
         return $this;
@@ -193,11 +193,11 @@ class StopList extends Base
     /**
      * Страница на которую необходимо перенаправить посетителя после его попадания под данную запись стоп-листа
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function urlRedirect(Operator $operator, string $value): StopList
+    public function urlRedirect(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'urlRedirect');
         return $this;
@@ -206,11 +206,11 @@ class StopList extends Base
     /**
      * ID сайта для которого запись будет действительна, если значение не задано, то это означает что запись действительная для всех сайтов
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StopList
      */
-    public function siteId(Operator $operator, string $value): StopList
+    public function siteId(Operators $operator, string $value): StopList
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

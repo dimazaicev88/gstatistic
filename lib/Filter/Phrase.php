@@ -10,11 +10,11 @@ class Phrase extends Base
     /**
      * UUID записи;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Phrase
      */
-    public function uuid(Operator $operator, string $value): Phrase
+    public function uuid(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -23,11 +23,11 @@ class Phrase extends Base
     /**
      * UUID сессии;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Phrase
      */
-    public function sessionUuid(Operator $operator, string $value): Phrase
+    public function sessionUuid(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'sessionUuid');
         return $this;
@@ -36,11 +36,11 @@ class Phrase extends Base
     /**
      * UUID поисковой системы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Phrase
      */
-    public function searcherUuid(Operator $operator, string $value): Phrase
+    public function searcherUuid(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'searcherUuid');
         return $this;
@@ -49,11 +49,11 @@ class Phrase extends Base
     /**
      * UUID записи из таблицы ссылающихся сайтов (страниц);
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Phrase
      */
-    public function refererUuid(Operator $operator, string $value): Phrase
+    public function refererUuid(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'refererUuid');
         return $this;
@@ -62,11 +62,11 @@ class Phrase extends Base
     /**
      * Название поисковой системы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function searcher(Operator $operator, string $value): Phrase
+    public function searcher(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'searcher');
         return $this;
@@ -75,11 +75,11 @@ class Phrase extends Base
     /**
      * Значение интервала для поля "дата"
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function date(Operator $operator, string $value): Phrase
+    public function date(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -88,11 +88,11 @@ class Phrase extends Base
     /**
      * Поисковая фраза;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function phrase(Operator $operator, string $value): Phrase
+    public function phrase(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'phrase');
         return $this;
@@ -101,11 +101,11 @@ class Phrase extends Base
     /**
      * Страница на которую пришли;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function to(Operator $operator, string $value): Phrase
+    public function to(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'to');
         return $this;
@@ -119,18 +119,18 @@ class Phrase extends Base
      */
     public function to404(bool $value): Phrase
     {
-        $this->setFilter(Operator::Eq, $value, 'to404');
+        $this->setFilter(Operators::Eq, $value, 'to404');
         return $this;
     }
 
     /**
      * ID сайта, на который пришли;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function siteId(Operator $operator, string $value): Phrase
+    public function siteId(Operators $operator, string $value): Phrase
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

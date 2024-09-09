@@ -8,11 +8,11 @@ class Adv extends Base
     /**
      * Referer1
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    function referer1(Operator $operator, string $value): Adv
+    function referer1(Operators $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "referer1");
         return $this;
@@ -21,11 +21,11 @@ class Adv extends Base
     /**
      * Referer2
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    function referer2(Operator $operator, string $value): Adv
+    function referer2(Operators $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "referer2");
         return $this;
@@ -35,11 +35,11 @@ class Adv extends Base
     /**
      * Посетителей на прямом заходе
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function guests(Operator $operator, int $value): Adv
+    function guests(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "guests");
         return $this;
@@ -48,11 +48,11 @@ class Adv extends Base
     /**
      * Посетителей на возврате
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function guestsBack(Operator $operator, int $value): Adv
+    function guestsBack(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "guestsBack");
         return $this;
@@ -61,11 +61,11 @@ class Adv extends Base
     /**
      * Новых посетителей
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function newGuests(Operator $operator, int $value): Adv
+    function newGuests(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "newGuests");
         return $this;
@@ -74,11 +74,11 @@ class Adv extends Base
     /**
      * Посетителей, добавивших сайт в "Избранное" на прямом заходе
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function favorites(Operator $operator, int $value): Adv
+    function favorites(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "favorites");
         return $this;
@@ -87,11 +87,11 @@ class Adv extends Base
     /**
      * Посетителей, добавившие сайт в "Избранное" на возврате
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function favoritesBack(Operator $operator, int $value): Adv
+    function favoritesBack(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "favoritesBack");
         return $this;
@@ -100,11 +100,11 @@ class Adv extends Base
     /**
      * Хостов на прямом заходе
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function hosts(Operator $operator, int $value): Adv
+    function hosts(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hosts");
         return $this;
@@ -113,11 +113,11 @@ class Adv extends Base
     /**
      * Хостов на возврате
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function hostsBack(Operator $operator, int $value): Adv
+    function hostsBack(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hostsBack");
         return $this;
@@ -126,11 +126,11 @@ class Adv extends Base
     /**
      * Сессий на прямом заходе
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function sessions(Operator $operator, int $value): Adv
+    function sessions(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "sessions");
         return $this;
@@ -139,11 +139,11 @@ class Adv extends Base
     /**
      * Сессий на возврате
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function sessionsBack(Operator $operator, int $value): Adv
+    function sessionsBack(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "sessionsBack");
         return $this;
@@ -152,11 +152,11 @@ class Adv extends Base
     /**
      * Хитов на прямом
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function hits(Operator $operator, int $value): Adv
+    function hits(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hits");
         return $this;
@@ -165,11 +165,11 @@ class Adv extends Base
     /**
      * Хитов на возврате
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return $this
      */
-    function hitsBack(Operator $operator, int $value): Adv
+    function hitsBack(Operators $operator, int $value): Adv
     {
         $this->setFilter($operator, $value, "hitsBack");
         return $this;
@@ -178,11 +178,11 @@ class Adv extends Base
     /**
      * Дата для фильтрации
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    function period(Operator $operator, string $value): Adv
+    function period(Operators $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "period");
         return $this;

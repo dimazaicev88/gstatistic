@@ -8,11 +8,11 @@ class SearcherHit extends Base
     /**
      * UUID хита;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function hitUuid(Operator $operator, string $value): SearcherHit
+    public function hitUuid(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'hitUuid');
         return $this;
@@ -21,11 +21,11 @@ class SearcherHit extends Base
     /**
      * UUID поисковой системы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function searcherUuid(Operator $operator, string $value): SearcherHit
+    public function searcherUuid(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'searcherUuid');
         return $this;
@@ -35,11 +35,11 @@ class SearcherHit extends Base
     /**
      * URL* - адрес проиндексированной страницы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function url(Operator $operator, string $value): SearcherHit
+    public function url(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -53,17 +53,17 @@ class SearcherHit extends Base
      */
     public function isUrl404(bool $date): SearcherHit
     {
-        $this->setFilter(Operator::Eq, $date, 'date');
+        $this->setFilter(Operators::Eq, $date, 'date');
         return $this;
     }
 
     /**
      * Название поисковой системы;
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function searcher(Operator $operator, string $value): SearcherHit
+    public function searcher(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'searcher');
         return $this;
@@ -72,11 +72,11 @@ class SearcherHit extends Base
     /**
      * Значение интервала для поля "дата"
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function date(Operator $operator, string $value): SearcherHit
+    public function date(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -85,11 +85,11 @@ class SearcherHit extends Base
     /**
      * IP адрес поисковой системы
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function ip(Operator $operator, string $value): SearcherHit
+    public function ip(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -98,22 +98,22 @@ class SearcherHit extends Base
     /**
      * UserAgent поисковой системы
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function userAgent(Operator $operator, string $value): SearcherHit
+    public function userAgent(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'userAgent');
         return $this;
     }
 
     /**
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function siteId(Operator $operator, string $value): SearcherHit
+    public function siteId(Operators $operator, string $value): SearcherHit
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;

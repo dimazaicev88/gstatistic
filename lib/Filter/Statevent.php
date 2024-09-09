@@ -9,11 +9,11 @@ class StatEvent extends Base
     /**
      * UUID события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function uuid(Operator $operator, string $value): StatEvent
+    public function uuid(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -22,11 +22,11 @@ class StatEvent extends Base
     /**
      * UUID типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function eventUuid(Operator $operator, string $value): StatEvent
+    public function eventUuid(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'eventUuid');
         return $this;
@@ -35,11 +35,11 @@ class StatEvent extends Base
     /**
      *Название типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function eventName(Operator $operator, string $value): StatEvent
+    public function eventName(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'eventName');
         return $this;
@@ -49,11 +49,11 @@ class StatEvent extends Base
     /**
      * Идентификатор event1 типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function event1(Operator $operator, string $value): StatEvent
+    public function event1(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'event1');
         return $this;
@@ -63,11 +63,11 @@ class StatEvent extends Base
     /**
      * Идентификатор event2 типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function event2(Operator $operator, string $value): StatEvent
+    public function event2(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'event2');
         return $this;
@@ -76,11 +76,11 @@ class StatEvent extends Base
     /**
      * Дополнительный параметр event3 события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function event3(Operator $operator, string $value): StatEvent
+    public function event3(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'event3');
         return $this;
@@ -89,11 +89,11 @@ class StatEvent extends Base
     /**
      * Время события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function date(Operator $operator, string $value): StatEvent
+    public function date(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -102,11 +102,11 @@ class StatEvent extends Base
     /**
      * Денежная сумма события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function money(Operator $operator, string $value): StatEvent
+    public function money(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'money');
         return $this;
@@ -115,11 +115,11 @@ class StatEvent extends Base
     /**
      * Трех символьный идентификатор валюты для денежной суммы
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function currency(Operator $operator, string $value): StatEvent
+    public function currency(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'currency');
         return $this;
@@ -128,11 +128,11 @@ class StatEvent extends Base
     /**
      * UUID сессии
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function sessionUuid(Operator $operator, string $value): StatEvent
+    public function sessionUuid(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'sessionUuid');
         return $this;
@@ -141,11 +141,11 @@ class StatEvent extends Base
     /**
      * UUID посетителя
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function guestUuid(Operator $operator, string $value): StatEvent
+    public function guestUuid(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'guestUuid');
         return $this;
@@ -154,11 +154,11 @@ class StatEvent extends Base
     /**
      * UUID рекламной кампании
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function advUuid(Operator $operator, string $value): StatEvent
+    public function advUuid(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'advUuid');
         return $this;
@@ -167,11 +167,11 @@ class StatEvent extends Base
     /**
      * Флаг "возврат по рекламной кампании", возможные значения
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function advBack(Operator $operator, string $value): StatEvent
+    public function advBack(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'advBack');
         return $this;
@@ -180,11 +180,11 @@ class StatEvent extends Base
     /**
      * UUID хита
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function hitUuid(Operator $operator, string $value): StatEvent
+    public function hitUuid(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'hitUuid');
         return $this;
@@ -193,11 +193,11 @@ class StatEvent extends Base
     /**
      * ID страны посетителя сгенерировавшего событие
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function countryId(Operator $operator, string $value): StatEvent
+    public function countryId(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'countryId');
         return $this;
@@ -206,11 +206,11 @@ class StatEvent extends Base
     /**
      * Название страны посетителя сгенерировавшего событие
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function country(Operator $operator, string $value): StatEvent
+    public function country(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'country');
         return $this;
@@ -219,11 +219,11 @@ class StatEvent extends Base
     /**
      * Ссылающаяся страница
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function refererUrl(Operator $operator, string $value): StatEvent
+    public function refererUrl(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'refererUrl');
         return $this;
@@ -232,11 +232,11 @@ class StatEvent extends Base
     /**
      * ID сайта для ссылающейся страницы
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function refererSiteId(Operator $operator, string $value): StatEvent
+    public function refererSiteId(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'refererSiteId');
         return $this;
@@ -245,11 +245,11 @@ class StatEvent extends Base
     /**
      * Страница на которой было зафиксировано событие
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function url(Operator $operator, string $value): StatEvent
+    public function url(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'url');
         return $this;
@@ -258,11 +258,11 @@ class StatEvent extends Base
     /**
      * ID сайта для страницы на которой было зафиксировано событие
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function siteId(Operator $operator, string $value): StatEvent
+    public function siteId(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;
@@ -270,11 +270,11 @@ class StatEvent extends Base
 
     /**
      *  Страница куда был перенаправлен посетитель после фиксации события
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEvent
      */
-    public function redirectUrl(Operator $operator, string $value): StatEvent
+    public function redirectUrl(Operators $operator, string $value): StatEvent
     {
         $this->setFilter($operator, $value, 'redirectUrl');
         return $this;

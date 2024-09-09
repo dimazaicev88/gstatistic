@@ -9,11 +9,11 @@ class StatEventType extends Base
     /**
      * UUID типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function uuid(Operator $operator, string $value): StatEventType
+    public function uuid(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -22,11 +22,11 @@ class StatEventType extends Base
     /**
      * Идентификатор event1 типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function event1(Operator $operator, string $value): StatEventType
+    public function event1(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'event1');
         return $this;
@@ -35,11 +35,11 @@ class StatEventType extends Base
     /**
      * Идентификатор event2 типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function event2(Operator $operator, string $value): StatEventType
+    public function event2(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'event2');
         return $this;
@@ -48,11 +48,11 @@ class StatEventType extends Base
     /**
      * Название типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function name(Operator $operator, string $value): StatEventType
+    public function name(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'name');
         return $this;
@@ -61,11 +61,11 @@ class StatEventType extends Base
     /**
      * Описание типа события
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function description(Operator $operator, string $value): StatEventType
+    public function description(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'description');
         return $this;
@@ -74,11 +74,11 @@ class StatEventType extends Base
     /**
      * Дата первого события данного типа
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function dateEnter(Operator $operator, string $value): StatEventType
+    public function dateEnter(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'dateEnter');
         return $this;
@@ -87,11 +87,11 @@ class StatEventType extends Base
     /**
      * Дата последнего события данного типа
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function dateLast(Operator $operator, string $value): StatEventType
+    public function dateLast(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -100,11 +100,11 @@ class StatEventType extends Base
     /**
      * Значение для произвольного периода
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function datePeriod(Operator $operator, string $value): StatEventType
+    public function datePeriod(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -113,11 +113,11 @@ class StatEventType extends Base
     /**
      * Суммарное количество событий данного типа
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function countEvent(Operator $operator, string $value): StatEventType
+    public function countEvent(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'countEvent');
         return $this;
@@ -131,18 +131,18 @@ class StatEventType extends Base
      */
     public function advVisible(bool $value): StatEventType
     {
-        $this->setFilter(Operator::Eq, $value, 'advVisible');
+        $this->setFilter(Operators::Eq, $value, 'advVisible');
         return $this;
     }
 
     /**
      * Количество дней отведенное для хранения событий данного типа
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return StatEventType
      */
-    public function keepDays(Operator $operator, int $value): StatEventType
+    public function keepDays(Operators $operator, int $value): StatEventType
     {
         $this->setFilter($operator, $value, 'keepDays');
         return $this;
@@ -151,11 +151,11 @@ class StatEventType extends Base
     /**
      * Количество дней отведенное для хранения статистики по данному типу события в разрезе по дням
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param int $value
      * @return StatEventType
      */
-    public function dynamicKeepDays(Operator $operator, int $value): StatEventType
+    public function dynamicKeepDays(Operators $operator, int $value): StatEventType
     {
         $this->setFilter($operator, $value, 'dynamicKeepDays');
         return $this;
@@ -164,11 +164,11 @@ class StatEventType extends Base
     /**
      * Суммарная денежная сумма для данного типа событий
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function money(Operator $operator, string $value): StatEventType
+    public function money(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'money');
         return $this;
@@ -177,11 +177,11 @@ class StatEventType extends Base
     /**
      * Трех символьный идентификатор валюты для денежной суммы
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return StatEventType
      */
-    public function currency(Operator $operator, string $value): StatEventType
+    public function currency(Operators $operator, string $value): StatEventType
     {
         $this->setFilter($operator, $value, 'currency');
         return $this;

@@ -3,15 +3,16 @@
 CModule::AddAutoloadClasses(
     'gstatistic',
     [
-        '\GStatistics\KeepStatistic' => 'lib/KeepStatistic.php',
-        '\GStatistics\Http\HttpClient' => 'http/HttpClient.php',
+        '\GStatistics\Api\KeepStatistic' => 'lib/Api/KeepStatistic.php',
+        'GStatistics\Api\Hit' => 'lib/Api/Hit.php',
+        '\GStatistics\Http\HttpClient' => 'lib/Http/HttpClient.php',
 //        'CAllStatistics' => 'classes/general/statistic.php',
 //        'GStatistics' => 'classes/general/statistic.php',
 //        'GAdv' => 'classes/general/GAdv.php',
 //        'GGuest' => 'classes/general/GGuest.php',
 //        'GTraffic' => 'classes/general/GTraffic.php',
 //        'GUserOnline' => 'classes/general/GUserOnline.php',
-          'Stoplist' => 'lib/StopList.php',
+        'Stoplist' => 'lib/StopList.php',
 //        'GHit' => 'classes/general/GHit.php',
 //        'GSession' => 'classes/general/GSession.php',
 //        'GReferer' => 'classes/general/GReferer.php',
@@ -32,6 +33,10 @@ CModule::AddAutoloadClasses(
 //        'GAllStatistic' => 'classes/general/statistic_old.php',
 //        'GStatistic' => 'classes/general/GStatistic.php',
 //        'GStatResult' => 'classes/general/statresult.php',
+
+        '\GStatistics\Filter\Operators' => 'lib/Filter/Operators.php',
+        '\GStatistics\Filter\Base' => 'lib/Filter/Base.php',
+        '\GStatistics\Filter\Hit' => 'lib/Filter/Hit.php',
         'gstatistic' => 'install/index.php',
     ]
 );

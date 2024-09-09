@@ -8,11 +8,11 @@ class Path extends Base
     /**
      * ID отрезка пути;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Path
      */
-    public function pathId(Operator $operator, string $value): Path
+    public function pathId(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'pathId');
         return $this;
@@ -21,11 +21,11 @@ class Path extends Base
     /**
      * Значение для интервала даты
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return Path
      */
-    public function date(Operator $operator, string $value): Path
+    public function date(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -34,11 +34,11 @@ class Path extends Base
     /**
      * Первая страница пути;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function firstPage(Operator $operator, string $value): Path
+    public function firstPage(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'firstPage');
         return $this;
@@ -47,11 +47,11 @@ class Path extends Base
     /**
      * ID сайта первой страницы пути;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function firstPageSiteId(Operator $operator, string $value): Path
+    public function firstPageSiteId(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'firstPageSiteId');
         return $this;
@@ -60,11 +60,11 @@ class Path extends Base
     /**
      * Была ли 404 ошибка на первой странице пути
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param bool $value
      * @return $this
      */
-    public function isFirstPage404(Operator $operator, bool $value): Path
+    public function isFirstPage404(Operators $operator, bool $value): Path
     {
         $this->setFilter($operator, $value, 'isFirstPage404');
         return $this;
@@ -74,11 +74,11 @@ class Path extends Base
     /**
      * Последняя страница пути;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function lastPage(Operator $operator, string $value): Path
+    public function lastPage(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'lastPage');
         return $this;
@@ -87,11 +87,11 @@ class Path extends Base
     /**
      * ID сайта последней страницы пути;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function lastPageSiteId(Operator $operator, string $value): Path
+    public function lastPageSiteId(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'lastPageSiteId');
         return $this;
@@ -105,18 +105,18 @@ class Path extends Base
      */
     public function isLastPage404(bool $isLastPage404): Path
     {
-        $this->setFilter(Operator::Eq, $isLastPage404, 'isLastPage404');
+        $this->setFilter(Operators::Eq, $isLastPage404, 'isLastPage404');
         return $this;
     }
 
     /**
      * Произвольная страница пути
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function page(Operator $operator, string $value): Path
+    public function page(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'page');
         return $this;
@@ -125,11 +125,11 @@ class Path extends Base
     /**
      * ID сайта произвольной страницы пути
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function pageSiteId(Operator $operator, string $value): Path
+    public function pageSiteId(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'pageSiteId');
         return $this;
@@ -143,18 +143,18 @@ class Path extends Base
      */
     public function isPage404(bool $value): Path
     {
-        $this->setFilter(Operator::Eq, $value, 'isPage404');
+        $this->setFilter(Operators::Eq, $value, 'isPage404');
         return $this;
     }
 
     /**
      * UUID рекламной кампании, по посетителям которой надо получить данные;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function advUuid(Operator $operator, string $value): Path
+    public function advUuid(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'advUuid');
         return $this;
@@ -167,11 +167,11 @@ class Path extends Base
      * B - только по возвратам по рекламной кампании;
      * S - сумма по прямым заходам и возвратам.
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param AdvDataType $value
      * @return $this
      */
-    public function advDataType(Operator $operator, AdvDataType $value): Path
+    public function advDataType(Operators $operator, AdvDataType $value): Path
     {
         $this->setFilter($operator, $value->value, 'advDataType');
         return $this;
@@ -180,11 +180,11 @@ class Path extends Base
     /**
      * Значение интервала для поля "количество страниц в пути";
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function steps(Operator $operator, string $value): Path
+    public function steps(Operators $operator, string $value): Path
     {
         $this->setFilter($operator, $value, 'steps');
         return $this;

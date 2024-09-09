@@ -8,11 +8,11 @@ class Referer extends Base
     /**
      * ID записи;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function uuid(Operator $operator, string $value): Referer
+    public function uuid(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -20,11 +20,11 @@ class Referer extends Base
 
     /**
      * UUID сессии;
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function sessionUuid(Operator $operator, string $value): Referer
+    public function sessionUuid(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'sessionUuid');
         return $this;
@@ -33,11 +33,11 @@ class Referer extends Base
     /**
      * Значение интервала для поля "дата"
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function date(Operator $operator, string $value): Referer
+    public function date(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -45,11 +45,11 @@ class Referer extends Base
 
     /**
      * Протокол ссылающейся страницы;
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function fromProtocol(Operator $operator, string $value): Referer
+    public function fromProtocol(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'fromProtocol');
         return $this;
@@ -58,11 +58,11 @@ class Referer extends Base
     /**
      * Домен ссылающейся страницы;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function fromDomain(Operator $operator, string $value): Referer
+    public function fromDomain(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'fromDomain');
         return $this;
@@ -71,11 +71,11 @@ class Referer extends Base
     /**
      * Ссылающаяся страница;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function fromPage(Operator $operator, string $value): Referer
+    public function fromPage(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'fromPage');
         return $this;
@@ -84,11 +84,11 @@ class Referer extends Base
     /**
      * Протокол + домен + ссылающаяся страница;
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function from(Operator $operator, string $value): Referer
+    public function from(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'from');
         return $this;
@@ -97,11 +97,11 @@ class Referer extends Base
     /**
      *Страница на которую пришли
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function to(Operator $operator, string $value): Referer
+    public function to(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'to');
         return $this;
@@ -115,7 +115,7 @@ class Referer extends Base
      */
     public function to404(bool $value): Referer
     {
-        $this->setFilter(Operator::Eq, $value, 'to404');
+        $this->setFilter(Operators::Eq, $value, 'to404');
         return $this;
     }
 
@@ -123,11 +123,11 @@ class Referer extends Base
     /**
      * ID сайта на который пришли
      *
-     * @param Operator $operator
+     * @param Operators $operator
      * @param string $value
      * @return $this
      */
-    public function siteId(Operator $operator, string $value): Referer
+    public function siteId(Operators $operator, string $value): Referer
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;
