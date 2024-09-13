@@ -29,11 +29,9 @@ class HttpClient
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // Выполняем запрос и получаем ответ
         $response = curl_exec($ch);
-        // Проверяем на наличие ошибок
         if (curl_errno($ch)) {
             echo 'Ошибка cURL: ' . curl_error($ch);
         }
-        // Закрываем cURL-сессию
         curl_close($ch);
         return $response;
     }
