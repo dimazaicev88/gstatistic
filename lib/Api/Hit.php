@@ -2,13 +2,15 @@
 
 namespace GStatistics\Api;
 
-use Bitrix\Main\Config\Option;
 use GStatistics\Http\HttpClient;
+use JsonException;
 
 class Hit
 {
 
     /**
+     * Поиск хитов
+     *
      * @param \GStatistics\Filter\Hit $filter
      * @param array $fields
      * @param array $order
@@ -16,6 +18,7 @@ class Hit
      * @param int $skip
      * @param int $limit
      * @return array
+     * @throws JsonException
      */
     public static function find(
         \GStatistics\Filter\Hit $filter,
@@ -32,8 +35,7 @@ class Hit
         $arrayFilter['limit'] = $limit;
         $arrayFilter['orderBy'] = $orderBy;
         $arrayFilter['order'] = $order;
-        var_dump(HttpClient::post(Option::get("gstatistic", "server_url") . 'v1/hit/filter', $arrayFilter));
-        return [];
+        return json_decode(json: HttpClient::post('v1/hit/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
     }
 
     /**

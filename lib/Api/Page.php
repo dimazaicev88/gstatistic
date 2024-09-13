@@ -2,6 +2,9 @@
 
 namespace GStatistics\Api;
 
+use GStatistics\Http\HttpClient;
+use JsonException;
+
 class Page
 {
 
@@ -22,6 +25,7 @@ class Page
      * @param int $skip
      * @param int $limit
      * @return array
+     * @throws JsonException
      */
     public static function find(
         \GStatistics\Filter\Page $filter,
@@ -32,7 +36,12 @@ class Page
         int                      $limit = 0
     ): array
     {
-        return [];
+        $arrayFilter = $filter->getFilter();
+        $arrayFilter['fields'] = $fields;
+        $arrayFilter['skip'] = $skip;
+        $arrayFilter['limit'] = $limit;
+        $arrayFilter['orderBy'] = $orderBy;
+        $arrayFilter['order'] = $order;
+        return json_decode(json: HttpClient::post('v1/page/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
     }
-
 }

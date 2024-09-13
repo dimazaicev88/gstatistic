@@ -2,14 +2,11 @@
 
 namespace GStatistics\Api;
 
-use Bitrix\Main\ArgumentOutOfRangeException;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
-use Bitrix\Main\HttpResponse;
 use Bitrix\Main\Web\Cookie;
 use Exception;
 use GStatistics\Http\HttpClient;
-use JsonException;
 
 
 class KeepStatistic
@@ -17,8 +14,6 @@ class KeepStatistic
 
 
     /**
-     * @throws ArgumentOutOfRangeException
-     * @throws JsonException
      */
     static function Keep(): void
     {
@@ -73,13 +68,12 @@ class KeepStatistic
         }
 
         try {
-            $answer = json_decode(json: HttpClient::post($serverUrl . 'statistic/add', $data), associative: true, flags: JSON_THROW_ON_ERROR);
+            $answer = json_decode(json: HttpClient::sendPostRequest($serverUrl . '/statistic/add', $data), associative: true, flags: JSON_THROW_ON_ERROR);
             $ctx->getResponse()->addCookie(
                 new Cookie(name: "guestUuid", value: $answer['guestUuid'], addPrefix: false)
             );
-            var_dump($answer);
         } catch (Exception $exception) {
-            var_dump($exception->getMessage());
+            echo $exception->getMessage();
         }
     }
 }

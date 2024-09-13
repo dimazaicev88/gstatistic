@@ -1,25 +1,23 @@
 <?php
 
-
-namespace GStatistics\Api;
+namespace gstatistic\lib\Api;
 
 use GStatistics\Http\HttpClient;
 use JsonException;
 
-class Referer
+class Session
 {
 
     /**
      * @throws JsonException
      */
-    public static function find(
-        \GStatistics\Filter\Referer $filter,
-        array                       $fields = [],
-        array                       $order = [],
+    function find(
+        \GStatistics\Filter\Session $filter,
+        array                       $fields = [''],
+        array                       $order = [''],
         string                      $orderBy = "",
         int                         $skip = 0,
-        int                         $limit = 0
-    ): array
+        int                         $limit = 0): array
     {
         $arrayFilter = $filter->getFilter();
         $arrayFilter['fields'] = $fields;
@@ -27,7 +25,10 @@ class Referer
         $arrayFilter['limit'] = $limit;
         $arrayFilter['orderBy'] = $orderBy;
         $arrayFilter['order'] = $order;
-        return json_decode(json: HttpClient::post('v1/referer/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
+        return json_decode(
+            json: HttpClient::post('v1/hit/filter', $arrayFilter),
+            associative: true,
+            flags: JSON_THROW_ON_ERROR
+        );
     }
-
 }
