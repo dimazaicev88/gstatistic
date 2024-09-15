@@ -40,10 +40,14 @@ class KeepStatistic
             $siteId = SITE_ID;
         }
 
+        $protocol = $_SERVER['REQUEST_SCHEME']; // http или https
+        $host = $_SERVER['HTTP_HOST']; // имя хоста
+        $url = $protocol . '://' . $host . $_SERVER['REQUEST_URI'];
+
         $data = [
             'phpsessid' => session_id(),
             'guestUuid' => $ctx->getRequest()->getCookie('guestUuid'),
-            'url' => $_SERVER['REQUEST_URI'],
+            'url' => $url,
             'referer' => $_SERVER['HTTP_REFERER'],
             'ip' => $_SERVER['REMOTE_ADDR'],
             'userAgent' => $_SERVER['HTTP_USER_AGENT'],
