@@ -1,15 +1,17 @@
 <?php
 
-
 namespace GStatistics\Api;
 
 use GStatistics\Http\HttpClient;
 use JsonException;
 
-class SearcherHit
+class StatEventType
 {
+
     /**
-     * @param \GStatistics\Filter\SearcherHit $filter
+     *
+     *
+     * @param \GStatistics\Filter\StatEventType $filter
      * @param array $fields
      * @param array $order
      * @param string $orderBy
@@ -18,13 +20,13 @@ class SearcherHit
      * @return array
      * @throws JsonException
      */
-    static function find(
-        \GStatistics\Filter\SearcherHit $filter,
-        array                           $fields = [],
-        array                           $order = [],
-        string                          $orderBy = "",
-        int                             $skip = 0,
-        int                             $limit = 0
+    public static function find(
+        \GStatistics\Filter\StatEventType $filter,
+        array                   $fields = [],
+        array                   $order = [],
+        string                  $orderBy = "",
+        int                     $skip = 0,
+        int                     $limit = 0
     ): array
     {
         $arrayFilter = $filter->getFilter();
@@ -33,7 +35,7 @@ class SearcherHit
         $arrayFilter['limit'] = $limit;
         $arrayFilter['orderBy'] = $orderBy;
         $arrayFilter['order'] = $order;
-        return json_decode(json: HttpClient::post('v1/searcherhit/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
-    }
+        return json_decode(json: HttpClient::post('v1/stateventtype/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
 
+    }
 }

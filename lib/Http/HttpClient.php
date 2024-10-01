@@ -2,6 +2,8 @@
 
 namespace GStatistics\Http;
 
+use Bitrix\Main\Config\Option;
+
 class HttpClient
 {
     /**
@@ -12,7 +14,7 @@ class HttpClient
      */
     static function sendPostRequest(string $url, array $data, int $timeoutMs = 500): string
     {
-        var_dump($url);
+        $json = json_encode($data, JSON_UNESCAPED_UNICODE);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         // Устанавливаем URL, на который будет отправлен запрос
@@ -20,11 +22,11 @@ class HttpClient
         // Устанавливаем метод запроса на POST
         curl_setopt($ch, CURLOPT_POST, true);
         // Передаем данные для POST-запроса
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         // Устанавливаем время ожидания ответа
         curl_setopt($ch, CURLOPT_TIMEOUT_MS, $timeoutMs);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         // Устанавливаем опцию для возврата ответа в виде строки
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // Выполняем запрос и получаем ответ
@@ -35,4 +37,16 @@ class HttpClient
         curl_close($ch);
         return $response;
     }
+
+    static function post(string $endpoint, array $data, int $timeOutMs = 500): string
+    {
+        return self::sendPostRequest(url: self::serverUrl() . $endpoint, data: $data, timeoutMs: $timeOutMs);
+    }
+
+
+    static function serverUrl(): string
+    {
+        return Option::get("gstatistic", "server_url", "");
+    }
+
 }

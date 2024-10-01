@@ -3,6 +3,9 @@
 
 namespace GStatistics\Api;
 
+use GStatistics\Http\HttpClient;
+use JsonException;
+
 class Adv
 {
 
@@ -18,6 +21,8 @@ class Adv
     }
 
     /**
+     * Поиск рекламных компаний
+     *
      * @param \GStatistics\Filter\Adv $filter
      * @param array $fields
      * @param array $order
@@ -25,6 +30,7 @@ class Adv
      * @param int $skip
      * @param int $limit
      * @return array
+     * @throws JsonException
      */
     public static function find(
         \GStatistics\Filter\Adv $filter,
@@ -35,9 +41,14 @@ class Adv
         int                     $limit = 0
     ): array
     {
+        $arrayFilter = $filter->getFilter();
+        $arrayFilter['fields'] = $fields;
+        $arrayFilter['skip'] = $skip;
+        $arrayFilter['limit'] = $limit;
+        $arrayFilter['orderBy'] = $orderBy;
+        $arrayFilter['order'] = $order;
+        return json_decode(json: HttpClient::post('v1/adv/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
 
-
-        return [];
     }
 
     /**

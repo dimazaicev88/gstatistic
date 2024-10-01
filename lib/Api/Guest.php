@@ -3,10 +3,16 @@
 namespace GStatistics\Api;
 
 
+use Bitrix\Main\Config\Option;
+use GStatistics\Http\HttpClient;
+use JsonException;
+
 class Guest
 {
 
     /**
+     * Поиск гостей
+     *
      * @param \GStatistics\Filter\Guest $filter
      * @param array $fields
      * @param array $order
@@ -14,6 +20,7 @@ class Guest
      * @param int $skip
      * @param int $limit
      * @return array
+     * @throws JsonException
      */
     static function find(
         \GStatistics\Filter\Guest $filter,
@@ -24,7 +31,13 @@ class Guest
         int                       $limit = 0
     ): array
     {
-        return [];
+        $arrayFilter = $filter->getFilter();
+        $arrayFilter['fields'] = $fields;
+        $arrayFilter['skip'] = $skip;
+        $arrayFilter['limit'] = $limit;
+        $arrayFilter['orderBy'] = $orderBy;
+        $arrayFilter['order'] = $order;
+        return json_decode(json: HttpClient::post('v1/guest/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
     }
 
     /**
