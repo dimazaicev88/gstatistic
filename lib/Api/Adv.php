@@ -3,12 +3,28 @@
 
 namespace GStatistics\Api;
 
+use GStatistics\Exceptions\AdvException;
 use GStatistics\Exceptions\HttpException;
 use GStatistics\Http\HttpClient;
 use JsonException;
 
 class Adv
 {
+
+    /**
+     * @throws HttpException
+     * @throws JsonException
+     * @throws AdvException
+     */
+    public static function add(array $data): string
+    {
+        $result = json_decode(json: HttpClient::post('/api/v1/adv/add', $data), associative: true, flags: JSON_THROW_ON_ERROR);
+        if (isset($result['error'])) {
+            throw new AdvException($result['error']);
+        }
+        return $result['uuid'];
+    }
+
 
     /**
      * Удаление рекламной компании

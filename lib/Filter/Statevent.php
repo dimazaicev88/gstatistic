@@ -3,7 +3,7 @@
 
 namespace GStatistics\Filter;
 
-class StatEvent extends Base
+class Event extends Base
 {
 
     /**
@@ -11,9 +11,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function uuid(Operators $operator, string $value): StatEvent
+    public function uuid(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'uuid');
         return $this;
@@ -24,9 +24,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function eventUuid(Operators $operator, string $value): StatEvent
+    public function eventUuid(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'eventUuid');
         return $this;
@@ -37,9 +37,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function eventName(Operators $operator, string $value): StatEvent
+    public function eventName(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'eventName');
         return $this;
@@ -51,9 +51,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function event1(Operators $operator, string $value): StatEvent
+    public function event1(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'event1');
         return $this;
@@ -65,9 +65,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function event2(Operators $operator, string $value): StatEvent
+    public function event2(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'event2');
         return $this;
@@ -78,9 +78,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function event3(Operators $operator, string $value): StatEvent
+    public function event3(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'event3');
         return $this;
@@ -91,9 +91,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function date(Operators $operator, string $value): StatEvent
+    public function date(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'date');
         return $this;
@@ -104,9 +104,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function money(Operators $operator, string $value): StatEvent
+    public function money(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'money');
         return $this;
@@ -117,9 +117,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function currency(Operators $operator, string $value): StatEvent
+    public function currency(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'currency');
         return $this;
@@ -130,9 +130,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function sessionUuid(Operators $operator, string $value): StatEvent
+    public function sessionUuid(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'sessionUuid');
         return $this;
@@ -143,9 +143,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function guestUuid(Operators $operator, string $value): StatEvent
+    public function guestUuid(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'guestUuid');
         return $this;
@@ -156,9 +156,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function advUuid(Operators $operator, string $value): StatEvent
+    public function advUuid(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'advUuid');
         return $this;
@@ -169,9 +169,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function advBack(Operators $operator, string $value): StatEvent
+    public function advBack(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'advBack');
         return $this;
@@ -182,9 +182,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function hitUuid(Operators $operator, string $value): StatEvent
+    public function hitUuid(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'hitUuid');
         return $this;
@@ -195,9 +195,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function countryId(Operators $operator, string $value): StatEvent
+    public function countryId(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'countryId');
         return $this;
@@ -208,9 +208,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function country(Operators $operator, string $value): StatEvent
+    public function country(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'country');
         return $this;
@@ -221,9 +221,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function refererUrl(Operators $operator, string $value): StatEvent
+    public function refererUrl(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'refererUrl');
         return $this;
@@ -234,9 +234,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function refererSiteId(Operators $operator, string $value): StatEvent
+    public function refererSiteId(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'refererSiteId');
         return $this;
@@ -247,9 +247,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function url(Operators $operator, string $value): StatEvent
+    public function url(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'url');
         return $this;
@@ -260,9 +260,9 @@ class StatEvent extends Base
      *
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function siteId(Operators $operator, string $value): StatEvent
+    public function siteId(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'siteId');
         return $this;
@@ -272,9 +272,9 @@ class StatEvent extends Base
      *  Страница куда был перенаправлен посетитель после фиксации события
      * @param Operators $operator
      * @param string $value
-     * @return StatEvent
+     * @return Event
      */
-    public function redirectUrl(Operators $operator, string $value): StatEvent
+    public function redirectUrl(Operators $operator, string $value): Event
     {
         $this->setFilter($operator, $value, 'redirectUrl');
         return $this;
