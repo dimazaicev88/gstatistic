@@ -2,6 +2,7 @@
 
 namespace GStatistics\Api;
 
+use GStatistics\Exceptions\HttpException;
 use GStatistics\Http\HttpClient;
 use JsonException;
 
@@ -9,7 +10,7 @@ class StatEvent
 {
 
     /**
-     * @throws JsonException
+     * @throws JsonException|HttpException
      */
     function find(
         \GStatistics\Filter\StatEvent $filter,
@@ -26,7 +27,7 @@ class StatEvent
         $arrayFilter['orderBy'] = $orderBy;
         $arrayFilter['order'] = $order;
         return json_decode(
-            json: HttpClient::post('v1/statevent/filter', $arrayFilter),
+            json: HttpClient::post('/api/v1/statevent/filter', $arrayFilter),
             associative: true,
             flags: JSON_THROW_ON_ERROR
         );

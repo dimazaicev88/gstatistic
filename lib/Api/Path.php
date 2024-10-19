@@ -2,11 +2,16 @@
 
 namespace GStatistics\Api;
 
+use GStatistics\Exceptions\HttpException;
 use GStatistics\Http\HttpClient;
 
 class Path
 {
 
+    /**
+     * @throws \JsonException
+     * @throws HttpException
+     */
     public static function find(
         \GStatistics\Filter\Path $filter,
         array                    $fields = [],
@@ -22,6 +27,6 @@ class Path
         $arrayFilter['limit'] = $limit;
         $arrayFilter['orderBy'] = $orderBy;
         $arrayFilter['order'] = $order;
-        return json_decode(json: HttpClient::post('v1/path/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
+        return json_decode(json: HttpClient::post('/api/v1/path/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
     }
 }

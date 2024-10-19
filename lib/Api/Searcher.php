@@ -2,6 +2,7 @@
 
 namespace GStatistics\Api;
 
+use GStatistics\Exceptions\HttpException;
 use GStatistics\Http\HttpClient;
 use JsonException;
 
@@ -11,6 +12,7 @@ class Searcher
 
     /**
      * @throws JsonException
+     * @throws HttpException
      */
     function find(
         \GStatistics\Filter\Searcher $filter,
@@ -27,7 +29,7 @@ class Searcher
         $arrayFilter['orderBy'] = $orderBy;
         $arrayFilter['order'] = $order;
         return json_decode(
-            json: HttpClient::post('v1/searcher/filter', $arrayFilter),
+            json: HttpClient::post('/api/v1/searcher/filter', $arrayFilter),
             associative: true,
             flags: JSON_THROW_ON_ERROR
         );

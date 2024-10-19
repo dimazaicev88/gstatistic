@@ -2,6 +2,7 @@
 
 namespace GStatistics\Api;
 
+use GStatistics\Exceptions\HttpException;
 use GStatistics\Http\HttpClient;
 use JsonException;
 
@@ -26,6 +27,7 @@ class Page
      * @param int $limit
      * @return array
      * @throws JsonException
+     * @throws HttpException
      */
     public static function find(
         \GStatistics\Filter\Page $filter,
@@ -42,6 +44,6 @@ class Page
         $arrayFilter['limit'] = $limit;
         $arrayFilter['orderBy'] = $orderBy;
         $arrayFilter['order'] = $order;
-        return json_decode(json: HttpClient::post('v1/page/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
+        return json_decode(json: HttpClient::post('/api/v1/page/filter', $arrayFilter), associative: true, flags: JSON_THROW_ON_ERROR);
     }
 }
