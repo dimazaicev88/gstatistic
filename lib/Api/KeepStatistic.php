@@ -23,9 +23,6 @@ class KeepStatistic
         $userLogin = "";
         $isUserAuth = false;
         $siteId = "";
-
-
-        $serverUrl = Option::get("gstatistic", "server_url");
         $ctx = Context::getCurrent();
 
         if (is_object($USER)) {
@@ -40,14 +37,10 @@ class KeepStatistic
             $siteId = SITE_ID;
         }
 
-        $protocol = $_SERVER['REQUEST_SCHEME']; // http или https
-        $host = $_SERVER['HTTP_HOST']; // имя хоста
-        $url = $protocol . '://' . $host . $_SERVER['REQUEST_URI'];
-
         $data = [
             'phpsessid' => session_id(),
             'guestUuid' => $ctx->getRequest()->getCookie('guestUuid'),
-            'url' => $url,
+            'url' => $_SERVER['REQUEST_URI'],
             'referer' => $_SERVER['HTTP_REFERER'],
             'ip' => $_SERVER['REMOTE_ADDR'],
             'userAgent' => $_SERVER['HTTP_USER_AGENT'],
@@ -72,7 +65,7 @@ class KeepStatistic
         }
 
         try {
-            $answer = json_decode(json: HttpClient::sendPostRequest($serverUrl . '/statistic/add', $data), associative: true, flags: JSON_THROW_ON_ERROR);
+            $answer = json_decode(json: HttpClient::post('/statistic/add', $data), associative: true, flags: JSON_THROW_ON_ERROR);
             $ctx->getResponse()->addCookie(
                 new Cookie(name: "guestUuid", value: $answer['guestUuid'], addPrefix: false)
             );

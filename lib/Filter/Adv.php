@@ -6,6 +6,19 @@ class Adv extends Base
 {
 
     /**
+     * Adv uuid
+     *
+     * @param Operators $operator
+     * @param string $value
+     * @return $this
+     */
+    function advUuid(Operators $operator, string $value): Adv
+    {
+        $this->setFilter($operator, $value, "uuid");
+        return $this;
+    }
+
+    /**
      * Referer1
      *
      * @param Operators $operator
@@ -150,7 +163,7 @@ class Adv extends Base
     }
 
     /**
-     * Хитов на прямом
+     * Хитов на прямом заходе
      *
      * @param Operators $operator
      * @param int $value
@@ -176,7 +189,7 @@ class Adv extends Base
     }
 
     /**
-     * Дата для фильтрации
+     * Период за который необходимо получить данные
      *
      * @param Operators $operator
      * @param string $value
@@ -185,6 +198,136 @@ class Adv extends Base
     function period(Operators $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "period");
+        return $this;
+    }
+
+    /**
+     * Время действия РК;
+     *
+     * @param Operators $operator
+     * @param string $value
+     * @return $this
+     */
+    function dateAdv(Operators $operator, string $value): Adv
+    {
+        $this->setFilter($operator, $value, "dateAdv");
+        return $this;
+    }
+
+    /**
+     * приоритет РК;
+     *
+     * @param Operators $operator
+     * @param string $value
+     * @return $this
+     */
+    function priority(Operators $operator, string $value): Adv
+    {
+        $this->setFilter($operator, $value, "priority");
+        return $this;
+    }
+
+    /**
+     * затраты на РК;
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function cost(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "cost");
+        return $this;
+    }
+
+    /**
+     * доходы с РК
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function revenue(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "revenue");
+        return $this;
+    }
+
+    /**
+     * прибыль с РК
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function benefit(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "benefit");
+        return $this;
+    }
+
+    /**
+     * рентабельность РК
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function roi(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "roi");
+        return $this;
+    }
+
+    /**
+     * коэффициент внимательности посетителей РК
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function attent(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "attent");
+        return $this;
+    }
+
+    /**
+     * Среднее кол-во посетителей в день
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function visitorsPerDay(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "visitorsPerDay");
+        return $this;
+    }
+
+    /**
+     * длительность РК
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function duration(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "duration");
+        return $this;
+    }
+
+    /**
+     * описание РК
+     *
+     * @param Operators $operator
+     * @param float $value
+     * @return $this
+     */
+    function description(Operators $operator, float $value): Adv
+    {
+        $this->setFilter($operator, $value, "description");
         return $this;
     }
 }
