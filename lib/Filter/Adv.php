@@ -322,10 +322,10 @@ class Adv extends Base
      * описание РК
      *
      * @param Operators $operator
-     * @param float $value
+     * @param string $value
      * @return $this
      */
-    function description(Operators $operator, float $value): Adv
+    function description(Operators $operator, string $value): Adv
     {
         $this->setFilter($operator, $value, "description");
         return $this;
