@@ -34,27 +34,14 @@ class gstatistic extends CModule
 
         RegisterModule("gstatistic");
 
-        RegisterModuleDependences("main", "OnPageStart", "gstatistic", "GStopList", "Check", "100");
-//        RegisterModuleDependences("main", "OnBeforeProlog", "gstatistic", "GStatistics", "Keep", "100");
-        RegisterModuleDependences("main", "OnAfterEpilog", "gstatistic", "GKeepStatistics", "Keep", "100");
-//        RegisterModuleDependences("main", "OnEpilog", "gstatistic", "GStatistics", "Set404", "100");
-//        RegisterModuleDependences("main", "OnBeforeProlog", "gstatistic", "GStatistics", "StartBuffer", "1000");
-//        RegisterModuleDependences("main", "OnEndBufferContent", "gstatistic", "GStatistics", "EndBuffer", "900");
-//        RegisterModuleDependences("main", "OnEventLogGetAuditTypes", "gstatistic", "GStatistics", "GetAuditTypes", 10);
+        RegisterModuleDependences("main", "OnAfterEpilog", "gstatistic", "KeepStatistic", "Keep", "100");
 
         return true;
     }
 
     function UnInstallDB($arParams = array())
     {
-        UnRegisterModuleDependences("main", "OnPageStart", "gstatistic", "GStopList", "Check");
-//        UnRegisterModuleDependences("main", "OnBeforeProlog", "gstatistic", "GStatistics", "Keep");
-        UnRegisterModuleDependences("main", "OnAfterEpilog", "gstatistic", "GStatistics", "Keep");
-//        UnRegisterModuleDependences("main", "OnEpilog", "gstatistic", "GStatistics", "Set404");
-//        UnRegisterModuleDependences("main", "OnEventLogGetAuditTypes", "gstatistic", "GStatistics", "GetAuditTypes");
-//        UnRegisterModuleDependences("main", "OnBeforeProlog", "gstatistic", "GStatistics", "StartBuffer");
-//        UnRegisterModuleDependences("main", "OnEndBufferContent", "gstatistic", "GStatistics", "EndBuffer");
-
+        UnRegisterModuleDependences("main", "OnAfterEpilog", "gstatistic", "KeepStatistic", "Keep");
         UnRegisterModule("gstatistic");
 
         return true;
@@ -94,7 +81,7 @@ class gstatistic extends CModule
         global $APPLICATION;
 
         $this->UnInstallDB();
-        $APPLICATION->IncludeAdminFile(GetMessage("GSTAT_INSTALL_TITLE"), $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/gstatistic/install/uninstall_page.php");
+        $APPLICATION->IncludeAdminFile(GetMessage("GSTAT_UNINSTALL_TITLE"), $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/gstatistic/install/uninstall_page.php");
     }
 
     function GetModuleRightList()

@@ -3,25 +3,32 @@
 namespace GStatistics\Http;
 
 use Bitrix\Main\Config\Option;
-use GStatistics\Exceptions\HttpException;
+use Exception;
+use GStatistics\Exceptions\Http\HttpException;
 
 
 class HttpClient
 {
     /**
-     * @param string $url
      * @param array $data
      * @param int $timeoutMs Время ожидания в миллисекундах
      * @return string
      * @throws HttpException
+     * @throws Exception
      */
-    static function send(string $url, array $data, int $timeoutMs = 500): string
+    static function sendStatistic(array $data, int $timeoutMs = 500): string
     {
+        $url = Option::get("gstatistic", "server_url");
+
+        if ($url === "") {
+            throw new HttpException();
+        }
+
         $json = json_encode($data, JSON_UNESCAPED_UNICODE);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
         // Устанавливаем URL, на который будет отправлен запрос
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $url . '/api/v1/');
         // Устанавливаем метод запроса на POST
         curl_setopt($ch, CURLOPT_POST, true);
         // Передаем данные для POST-запроса
@@ -39,10 +46,5 @@ class HttpClient
         }
         curl_close($ch);
         return $response;
-    }
-
-    static function serverUrl(): string
-    {
-        return Option::get("gstatistic", "server_url", "");
     }
 }

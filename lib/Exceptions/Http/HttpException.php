@@ -1,6 +1,6 @@
 <?php
 
-namespace GStatistics\Exceptions;
+namespace GStatistics\Exceptions\Http;
 
 use Exception;
 

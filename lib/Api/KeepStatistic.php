@@ -2,34 +2,30 @@
 
 namespace GStatistics\Api;
 
-use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
 use Bitrix\Main\Web\Cookie;
-use COption;
-use Exception;
+use GStatistics\Exceptions\Http\HttpException;
 use GStatistics\Http\HttpClient;
+use JsonException;
 
 
 class KeepStatistic
 {
 
     /**
+     * @throws HttpException | JsonException
      */
     static function Keep(): void
     {
         global $USER;
 
         $userId = 0;
-        $userLogin = "";
-        $isUserAuth = false;
         $siteId = "";
         $ctx = Context::getCurrent();
 
         if (is_object($USER)) {
             if ($USER->GetID()) {
                 $userId = $USER->GetID();
-                $userLogin = $USER->GetLogin();
-                $isUserAuth = true;
             }
         }
 
@@ -37,40 +33,39 @@ class KeepStatistic
             $siteId = SITE_ID;
         }
 
+        $guestHash = md5(
+            ($_SERVER["HTTP_USER_AGENT"] ?? '') .
+            $_SERVER["REMOTE_ADDR"] .
+            ($_SERVER["HTTP_X_FORWARDED_FOR"] ?? '')
+        );
+
         $data = [
             'phpsessid' => session_id(),
-            'guestUuid' => $ctx->getRequest()->getCookie('guestUuid'),
             'url' => $_SERVER['REQUEST_URI'],
             'referer' => $_SERVER['HTTP_REFERER'],
+            'guestHash' => $guestHash,
             'ip' => $_SERVER['REMOTE_ADDR'],
             'userAgent' => $_SERVER['HTTP_USER_AGENT'],
             'userId' => intval($userId),
-            'userLogin' => $userLogin,
-            'isUserAuth' => $isUserAuth,
             'httpXForwardedFor' => $_SERVER['HTTP_X_FORWARDED_FOR'],
             'isError404' => defined("ERROR_404") && ERROR_404 == "Y",
             'siteId' => $siteId,
             'lang' => $_SERVER["HTTP_ACCEPT_LANGUAGE"],
             'method' => $_SERVER["REQUEST_METHOD"],
-            'cookies' => json_encode($_COOKIE, JSON_UNESCAPED_UNICODE),
-            'isFavorite' => isset($_SESSION["SESS_ADD_TO_FAVORITES"]) && $_SESSION["SESS_ADD_TO_FAVORITES"] == "Y",
+            'cookies' => json_encode($_COOKIE, JSON_UNESCAPED_UNICODE)
         ];
 
         if (defined("GENERATE_EVENT") && GENERATE_EVENT == "Y") {
-            global $event1, $event2, $event3, $goto, $money, $currency, $site_id;
+            global $event1, $event2, $event3;
 
             $data['event1'] = $event1;
             $data['event2'] = $event2;
             $data['event3'] = $event3;
         }
 
-        try {
-            $answer = json_decode(json: HttpClient::post('/statistic/add', $data), associative: true, flags: JSON_THROW_ON_ERROR);
-            $ctx->getResponse()->addCookie(
-                new Cookie(name: "guestUuid", value: $answer['guestUuid'], addPrefix: false)
-            );
-        } catch (Exception $exception) {
-            echo $exception->getMessage();
-        }
+        $answer = json_decode(json: HttpClient::sendStatistic($data), associative: true, flags: JSON_THROW_ON_ERROR);
+        $ctx->getResponse()->addCookie(
+            new Cookie(name: "guestUuid", value: $answer['guestUuid'], addPrefix: false)
+        );
     }
 }
