@@ -1,0 +1,13 @@
+{
+  "name": "gstatistic",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node_modules/.bin/tsc src/analyzer.ts --outFile src/analyzer.js && uglifyjs src/analyzer.js -o src/analyzer.min.js -c -m && rm src/analyzer.js"
+  },
+  "devDependencies": {
+    "typescript": "~5.6.2",
+    "uglify-js": "^3.19.3"
+  }
+}
