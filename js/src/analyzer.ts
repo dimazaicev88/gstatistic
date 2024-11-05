@@ -1,3 +1,6 @@
+// https://github.com/TA3/web-user-behaviour/blob/master/userBehaviour.js
+
+
 interface MouseMovement {
     x: number;
     y: number;
