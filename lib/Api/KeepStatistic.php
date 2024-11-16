@@ -23,10 +23,9 @@ class KeepStatistic
         $siteId = "";
         $ctx = Context::getCurrent();
 
-        if (is_object($USER)) {
-            if ($USER->GetID()) {
-                $userId = $USER->GetID();
-            }
+        $loginCookieName = COption::GetOptionString("main", "cookie_name", "BITRIX_SM") . "_LOGIN";
+        if ($USER->IsAuthorized() && !empty($_COOKIE[$loginCookieName])) {
+            $userId = CUser::GetByLogin($_COOKIE[$loginCookieName])->Fetch()['ID'];
         }
 
         if (!(defined("ADMIN_SECTION") && ADMIN_SECTION === true) && defined("SITE_ID")) {

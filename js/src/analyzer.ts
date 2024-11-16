@@ -1,10 +1,6 @@
+//TODO доделать анализ движения мыши, клики, scroll.
 // https://github.com/TA3/web-user-behaviour/blob/master/userBehaviour.js
 
-
-/**
- * @author Taha Al-Jody <taha@ta3design.com>
- * https://github.com/TA3/web-user-behaviour
- */
 
 interface UserBehaviourConfig {
     userInfo?: boolean;
