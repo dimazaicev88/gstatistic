@@ -4,8 +4,7 @@ namespace GStatistics\Http;
 
 use Bitrix\Main\Config\Option;
 use Exception;
-use GStatistics\Exceptions\Http\HttpException;
-
+use GStatistics\Exceptions\HttpException;
 
 class HttpClient
 {
@@ -19,16 +18,14 @@ class HttpClient
     static function sendStatistic(array $data, int $timeoutMs = 500): string
     {
         $url = Option::get("gstatistic", "server_url");
-
         if ($url === "") {
             throw new HttpException();
         }
-
         $json = json_encode($data, JSON_UNESCAPED_UNICODE);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
         // Устанавливаем URL, на который будет отправлен запрос
-        curl_setopt($ch, CURLOPT_URL, $url . '/api/v1/');
+        curl_setopt($ch, CURLOPT_URL, $url . 'api/v1/statistic/add');
         // Устанавливаем метод запроса на POST
         curl_setopt($ch, CURLOPT_POST, true);
         // Передаем данные для POST-запроса

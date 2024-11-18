@@ -3,17 +3,17 @@
 namespace GStatistics\Api;
 
 use Bitrix\Main\Context;
-use Bitrix\Main\Web\Cookie;
-use GStatistics\Exceptions\Http\HttpException;
+use COption;
+use CUser;
+use GStatistics\Exceptions\HttpException;
 use GStatistics\Http\HttpClient;
-use JsonException;
 
 
 class KeepStatistic
 {
 
     /**
-     * @throws HttpException | JsonException
+     * @throws HttpException | \JsonException|\Exception
      */
     static function Keep(): void
     {
@@ -62,9 +62,10 @@ class KeepStatistic
             $data['event3'] = $event3;
         }
 
-        $answer = json_decode(json: HttpClient::sendStatistic($data), associative: true, flags: JSON_THROW_ON_ERROR);
-        $ctx->getResponse()->addCookie(
-            new Cookie(name: "guestUuid", value: $answer['guestUuid'], addPrefix: false)
-        );
+        try {
+          HttpClient::sendStatistic($data);
+        } catch (HttpException $e) {
+            //TODO catch error
+        }
     }
 }

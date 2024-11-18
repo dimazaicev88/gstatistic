@@ -1,12 +1,11 @@
 <?php
 
-namespace GStatistics\Exceptions\Http;
+namespace GStatistics\Exceptions;
 
 use Exception;
 
 class HttpException extends Exception
 {
-
     public function __construct($message = "")
     {
         parent::__construct($message);
