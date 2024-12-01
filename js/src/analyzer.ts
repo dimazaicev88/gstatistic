@@ -1,15 +1,24 @@
+//TODO доделать.
+
 interface MouseMovement {
     x: number;
     y: number;
     time: number;
 }
 
-class AnalyzeUserBehavior {
+class UserBehaviorTracker {
     private mouseMovements: MouseMovement[] = [];
     private clickCount: number = 0;
     private scrollCount: number = 0;
     private resizeCount: number = 0;
     private visibilityChangeCount: number = 0;
+    private intervalId: number | null = null;
+
+    constructor(
+        private urlServerStatistic: string,
+        private timePolingMouseMoveAnalyze: number //ms
+    ) {
+    }
 
     private addListeners(): void {
         document.addEventListener('mousemove', this.mousemoveLister);
@@ -34,8 +43,8 @@ class AnalyzeUserBehavior {
 
     private scrollListener() {
         this.scrollCount++
-    }
 
+    }
 
     private clickListener(): void {
         this.clickCount++;
@@ -43,14 +52,6 @@ class AnalyzeUserBehavior {
 
     private visibilityChangeListener() {
         this.visibilityChangeCount++
-    }
-
-    stop() {
-        document.removeEventListener('mousemove', this.mousemoveLister);
-        document.removeEventListener('click', this.clickListener);
-        document.removeEventListener("scroll", this.scrollListener);
-        document.removeEventListener("resize", this.resizeListener)
-        document.removeEventListener("visibilitychange", this.visibilityChangeListener);
     }
 
     private analyzeMouseData(): void {
@@ -69,8 +70,45 @@ class AnalyzeUserBehavior {
         }
     }
 
+    stop() {
+        document.removeEventListener('mousemove', this.mousemoveLister);
+        document.removeEventListener('click', this.clickListener);
+        document.removeEventListener("scroll", this.scrollListener);
+        document.removeEventListener("resize", this.resizeListener)
+        document.removeEventListener("visibilitychange", this.visibilityChangeListener);
+
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+        }
+    }
+
     start() {
         this.addListeners();
-        this.analyzeMouseData();
+
+        this.intervalId = setInterval(
+            () => {
+                this.analyzeMouseData();
+            }, this.timePolingMouseMoveAnalyze
+        )
+    }
+
+    sendStatistic() {
+        fetch(this.urlServerStatistic, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify({a: 1, b: 2})
+            }
+        ).catch((error) => {
+            //TODO send error
+        })
     }
 }
+
+const userBehaviorTracker = new UserBehaviorTracker("https://statistic.intsite.org", 2);
+userBehaviorTracker.start()
+userBehaviorTracker.sendStatistic();
+
