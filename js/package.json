@@ -7,7 +7,13 @@
     "build": "node_modules/.bin/tsc src/analyzer.ts --outFile src/analyzer.js && uglifyjs src/analyzer.js -o src/analyzer.min.js -c -m && rm src/analyzer.js"
   },
   "devDependencies": {
+    "browsertime": "^0.12.3",
+    "network-information-types": "^0.1.1",
     "typescript": "~5.7.2",
     "uglify-js": "^3.19.3"
+  },
+  "dependencies": {
+    "ua-parser-js": "^2.0.0",
+    "web-vitals": "^4.2.4"
   }
 }
