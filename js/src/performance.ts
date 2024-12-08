@@ -1,40 +1,52 @@
 import {onCLS, onFCP, onINP, onLCP} from "web-vitals";
-import {CLSMetric} from "web-vitals/src/types";
-
-interface NavigationTiming {
-    activationStart: number
-    connectEnd: number
-    connectStart: number
-    decodedBodySize: number
-    deliveryType: string
-    domComplete: number
-    domContentLoadedEventEnd: number
-    domContentLoadedEventStart: number
-    domInteractive: number
-    domainLookupEnd: number
-    domainLookupStart: number
-    duration: number
-    fetchStart: number
-    firstInterimResponseStart: number
-    loadEventEnd: number
-    loadEventStart: number
-    redirectCount: number
-    redirectEnd: number
-    redirectStart: number
-    requestStart: number
-    responseEnd: number
-    responseStart: number
-    transferSize: number
-    timeServer: number
-    timeResponse: number
-    timeDom: number
-    timeLoad: number
-}
-
+import {CLSMetric, FCPMetric, INPMetric, LCPMetric, ReportOpts} from "web-vitals/src/types";
+import {NavigationTiming, NavigatorData, ScreenData} from "./interfaces/interfaces";
+import {UAParser} from "ua-parser-js";
 
 class PerformanceAnalyzer {
     readonly isSupportPerformance: boolean = performance && typeof performance.getEntriesByType === 'function';
+    private clsMetric: CLSMetric | null = null;
+    private inpMetric: INPMetric | null = null;
+    private lcpMetric: LCPMetric | null = null;
+    private fcpMetric: FCPMetric | null = null;
 
+    get navigatorData(): NavigatorData {
+        const connection: NetworkInformation | undefined = navigator.connection;
+        const uaParser = UAParser(navigator.userAgent);
+        const navData: NavigatorData = {
+            deviceMemory: navigator.deviceMemory,
+            cpus: navigator.hardwareConcurrency,
+            browser: uaParser.browser.name,
+            browserVersion: uaParser.browser.version,
+            osName: uaParser.os.name,
+            osVersion: uaParser.os.version,
+            osDeviceType: uaParser.device.type
+        }
+
+        if (!connection) {
+            return navData;
+        }
+
+        navData.downLink = connection.downlink;
+        navData.effectiveType = connection.effectiveType;
+        navData.rtt = connection.rtt;
+        navData.saveData = connection.saveData;
+
+        return navData
+    }
+
+    get screenData(): ScreenData {
+        return {
+            screenAvailHeight: screen.availHeight,
+            screenAvailWidth: screen.availWidth,
+            screenHeight: screen.height,
+            screenWidth: screen.width,
+            innerHeight: innerHeight,
+            innerWidth: innerWidth,
+            screenOrientation: screen.orientation ? screen.orientation.type : undefined,
+            devicePixelRatio: devicePixelRatio
+        };
+    }
 
     get performanceNavigationTiming(): NavigationTiming | {} {
         if (!this.isSupportPerformance) {
@@ -44,85 +56,72 @@ class PerformanceAnalyzer {
         const navigationTiming: PerformanceNavigationTiming = performance.getEntriesByType('navigation')[0];
 
         return {
-            actS: navigationTiming.activationStart,
-            conE: navigationTiming.connectEnd,
-            conS: navigationTiming.connectStart,
-            decBS: navigationTiming.decodedBodySize,
-            delT: navigationTiming.deliveryType,
-            domC: navigationTiming.domComplete,
-            domCLEE: navigationTiming.domContentLoadedEventEnd,
-            domCLES: navigationTiming.domContentLoadedEventStart,
-            domI: navigationTiming.domInteractive,
-            domLE: navigationTiming.domainLookupEnd,
-            domLS: navigationTiming.domainLookupStart,
-            dur: navigationTiming.duration,
-            fetS: navigationTiming.fetchStart,
-            firIRS: navigationTiming.firstInterimResponseStart,
-            loadEE: navigationTiming.loadEventEnd,
-            loadES: navigationTiming.loadEventStart,
-            redC: navigationTiming.redirectCount,
-            redE: navigationTiming.redirectEnd,
-            redS: navigationTiming.redirectStart,
-            reqS: navigationTiming.requestStart,
-            resE: navigationTiming.responseEnd,
-            resS: navigationTiming.responseStart,
-            trS: navigationTiming.transferSize,
-            time_server: navigationTiming.responseStart - navigationTiming.requestStart,
-            time_response: navigationTiming.responseEnd - navigationTiming.responseStart,
-            time_dom: navigationTiming.domContentLoadedEventEnd - navigationTiming.requestStart,
-            time_load: navigationTiming.loadEventEnd - navigationTiming.requestStart
+            activationStart: navigationTiming.activationStart,
+            connectEnd: navigationTiming.connectEnd,
+            connectStart: navigationTiming.connectStart,
+            decodedBodySize: navigationTiming.decodedBodySize,
+            deliveryType: navigationTiming.deliveryType,
+            domComplete: navigationTiming.domComplete,
+            domContentLoadedEventEnd: navigationTiming.domContentLoadedEventEnd,
+            domContentLoadedEventStart: navigationTiming.domContentLoadedEventStart,
+            domInteractive: navigationTiming.domInteractive,
+            domainLookupEnd: navigationTiming.domainLookupEnd,
+            domainLookupStart: navigationTiming.domainLookupStart,
+            duration: navigationTiming.duration,
+            fetchStart: navigationTiming.fetchStart,
+            firstInterimResponseStart: navigationTiming.firstInterimResponseStart,
+            loadEventEnd: navigationTiming.loadEventEnd,
+            loadEventStart: navigationTiming.loadEventStart,
+            redirectCount: navigationTiming.redirectCount,
+            redirectEnd: navigationTiming.redirectEnd,
+            redirectStart: navigationTiming.redirectStart,
+            requestStart: navigationTiming.requestStart,
+            responseEnd: navigationTiming.responseEnd,
+            responseStart: navigationTiming.responseStart,
+            transferSize: navigationTiming.transferSize,
+            timeServer: navigationTiming.responseStart - navigationTiming.requestStart,
+            timeResponse: navigationTiming.responseEnd - navigationTiming.responseStart,
+            timeDom: navigationTiming.domContentLoadedEventEnd - navigationTiming.requestStart,
+            timeLoad: navigationTiming.loadEventEnd - navigationTiming.requestStart
         };
     }
 
+    private removeEventListeners(): void {
+        document.removeEventListener('visibilitychange', this.onVisibilitychangeHandler);
+        window.removeEventListener('pagehide', sendData);
+    }
 
+    private addEventListeners(): void {
+        if ('onvisibilitychange' in document) {
+            document.addEventListener('visibilitychange', this.onVisibilitychangeHandler);
+        } else {
+            window.addEventListener('pagehide', sendData);
+        }
+    }
+
+    onVisibilitychangeHandler(): void {
+        if (document.hidden) {
+            sendData();
+        }
+    }
+
+    private catchWebVitals(): void {
+        onCLS((metric: CLSMetric) => this.clsMetric = metric, {reportAllChanges: true});
+        onINP((metric: INPMetric) => this.inpMetric = metric, {reportAllChanges: true});
+        onLCP((metric: LCPMetric) => this.lcpMetric = metric, {reportAllChanges: true});
+        onFCP((metric: FCPMetric) => this.fcpMetric = metric);
+    }
 }
 
 
 const url: string = '/gelf';
 
 
-
-
-interface WebVitalsData {
-    CLS?: number;
-    tarCLS: string;
-    INP?: number;
-    tarINP: string;
-    LCP?: number;
-    tarLCP: string;
-    FCP?: number;
-}
-
-const webVitalsData: WebVitalsData = {
-    CLS: undefined,
-    tarCLS: '',
-    INP: undefined,
-    tarINP: '',
-    LCP: undefined,
-    tarLCP: '',
-    FCP: undefined,
-};
-
 const clientIP: string[] = [];
 let isHuman: boolean = false;
 
-setWebVitals();
-// findIP();
 detectHumanInteraction();
-setEvents();
 
-function setEvents(): void {
-    if ('onvisibilitychange' in document) {
-        document.addEventListener('visibilitychange', visibilitychangeHandler);
-    } else {
-        window.addEventListener('pagehide', sendData);
-    }
-}
-
-function unsetEvents(): void {
-    document.removeEventListener('visibilitychange', visibilitychangeHandler);
-    window.removeEventListener('pagehide', sendData);
-}
 
 function detectHumanInteraction(): void {
     const humanEvents: string[] = ['touchstart', 'keydown', 'scroll', 'mousemove'];
@@ -141,115 +140,6 @@ function detectHumanInteraction(): void {
 
 function round(value: number, precision: number = 2): number {
     return +(Math.round(Number(value + 'e+' + precision)) + 'e-' + precision);
-}
-
-function setWebVitals(): void {
-    const vitalsHandler = (metric: CLSMetric) => {
-        if (metric.name === 'CLS') {
-            webVitalsData.tarCLS = metric.attribution.largestShiftTarget || '';
-        } else if (metric.name === 'INP') {
-            webVitalsData.tarINP = metric.attribution.interactionTarget || '';
-        } else if (metric.name === 'LCP') {
-            webVitalsData.tarLCP = metric.attribution.element || '';
-        }
-        webVitalsData[metric.name] = metric.value;
-    };
-
-    onCLS(vitalsHandler, {reportAllChanges: true});
-    onINP(vitalsHandler, {reportAllChanges: true});
-    onLCP(vitalsHandler, {reportAllChanges: true});
-    onFCP(vitalsHandler);
-}
-
-// function findIP(): void {
-//     const ipHandler = (ip: string) => {
-//         clientIP.push(ip);
-//     };
-//
-//     const myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
-//
-//     if (!myPeerConnection) return;
-//
-//     const pc = new myPeerConnection({iceServers: []});
-//
-//     const noop = () => {
-//     };
-//     const localIPs: Record<string, boolean> = {};
-//
-//     const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g;
-//
-//     if (!pc.createDataChannel) return;
-//
-//     pc.createDataChannel('');
-//
-//     pc.createOffer(sdp => {
-//         sdp.sdp.split(' ').forEach(line => {
-//             if (line.indexOf('candidate') < 0) return;
-//             line.match(ipRegex)?.forEach(ipIterate);
-//         });
-//         pc.setLocalDescription(sdp, noop, noop);
-//     }, noop);
-//
-//     pc.onicecandidate = ice => {
-//         if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
-//         ice.candidate.candidate.match(ipRegex).forEach(ipIterate);
-//     };
-//
-//     function ipIterate(ip: string): void {
-//         if (!localIPs[ip]) {
-//             ipHandler(ip);
-//         }
-//         localIPs[ip] = true;
-//     }
-// }
-
-
-function getNavigatorData(): Record<string, any> {
-    const connection = navigator.connection || {};
-
-    const browserInfo = detectBrowser(navigator.userAgent);
-    const osInfo = detectOs(navigator.userAgent);
-
-    return {
-        deviceMemory: navigator.deviceMemory,
-        cpus: navigator.hardwareConcurrency,
-        user_agent: navigator.userAgent,
-        browser: browserInfo.name,
-        browserVersion: browserInfo.version,
-        osN: osInfo.name,
-        osV: osInfo.version,
-        dType: osInfo.deviceType,
-
-        downlink: connection.downlink,
-        conType: connection.effectiveType,
-        rtt: connection.rtt,
-        saveData: connection.saveData
-    };
-}
-
-function getScreenData(): Record<string, any> {
-    return {
-        avH: screen.availHeight,
-        avW: screen.availWidth,
-        height: screen.height,
-        width: screen.width,
-
-        inH: innerHeight,
-        inW: innerWidth,
-
-        orient: screen.orientation ? screen.orientation.type : undefined,
-
-        dpr: devicePixelRatio
-    };
-}
-
-function getLocationData(): Record<string, any> {
-    return {
-        host: location.hostname,
-
-        url_short: location.href.replace(/#.*/, '').replace(/\?.*/, '').replace(/\/\d+(?=\/|$)/g, '/0-9').replace(/(\/|\/index\.php)$/, ''),
-        referrer: document.referrer
-    };
 }
 
 function getData(): Record<string, any> {
@@ -286,7 +176,7 @@ function sendData(): void {
         const data = getData();
 
         const jsonData: string = JSON.stringify(data, function (key, value) {
-            if (value === undefined || value === NaN) {
+            if (value === undefined || isNaN(value)) {
                 return null;
             }
             if (typeof value === 'number') {
@@ -303,13 +193,12 @@ function sendData(): void {
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.send(jsonData);
         }
-
         unsetEvents();
     }
 }
 
-function visibilitychangeHandler(): void {
-    if (document.hidden) {
-        sendData();
-    }
-}
+// function visibilitychangeHandler(): void {
+//     if (document.hidden) {
+//         sendData();
+//     }
+// }
