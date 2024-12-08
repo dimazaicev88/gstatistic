@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "node_modules/.bin/tsc src/analyzer.ts --outFile src/analyzer.js && uglifyjs src/analyzer.js -o src/analyzer.min.js -c -m && rm src/analyzer.js"
+    "build": "node_modules/.bin/tsc src/userBehavior.ts --outFile src/analyzer.js && uglifyjs src/analyzer.js -o src/analyzer.min.js -c -m && rm src/analyzer.js"
   },
   "devDependencies": {
     "browsertime": "^0.12.3",

@@ -3,6 +3,7 @@ import {CLSMetric, FCPMetric, INPMetric, LCPMetric, ReportOpts} from "web-vitals
 import {NavigationTiming, NavigatorData, ScreenData} from "./interfaces/interfaces";
 import {UAParser} from "ua-parser-js";
 
+//TODO доделать.
 class PerformanceAnalyzer {
     readonly isSupportPerformance: boolean = performance && typeof performance.getEntriesByType === 'function';
     private clsMetric: CLSMetric | null = null;
